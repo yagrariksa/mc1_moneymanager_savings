@@ -18,7 +18,7 @@ class AddAccountTableViewController: UITableViewController {
     var account: Account?
     var accountGroupList: [AccountGroup] = [AccountGroup]()
     
-    @IBOutlet var accountGroupTextField: UITextField!
+    @IBOutlet var accountGroupTextField: UILabel!
     @IBOutlet var nameTextField: UITextField!
     @IBOutlet var amountTextField: UITextField!
     @IBOutlet var noteTextField: UITextField!
@@ -26,6 +26,13 @@ class AddAccountTableViewController: UITableViewController {
     var accountGroupSelected: AccountGroup?
     
     @IBOutlet var saveBarButton: UIBarButtonItem!
+    
+    // FOR PICKER VIEW
+    let screenWidth = UIScreen.main.bounds.width - 10
+    let screenHeight = UIScreen.main.bounds.height / 4
+    var selectedRow = 0
+    
+    @IBOutlet var accountGroupCell: UITableViewCell!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +45,7 @@ class AddAccountTableViewController: UITableViewController {
             nameTextField.text = account.name
             accountGroupSelected = account.group
             title = "Edit Account"
+            selectedRow = accountGroupList.firstIndex(where: {$0.uid == account.groupUid}) ?? 0
         }else{
             // DEBUG
             accountGroupSelected = accountGroupList[0]
@@ -60,6 +68,8 @@ class AddAccountTableViewController: UITableViewController {
         guard let group = accountGroupSelected else {return}
         if account != nil {
             self.account?.name = nameTextField.text ?? ""
+            self.account?.group = group
+            self.account?.groupUid = group.uid
         }else{
             account = Account(name: nameTextField.text ?? "", uid: UUID().uuidString, group: group, groupUid: group.uid)
         }
@@ -76,8 +86,41 @@ class AddAccountTableViewController: UITableViewController {
         super.init(coder: coder)
     }
     
+    
+    // show Picker View
     @IBAction func selectAccountGroup(_ sender: Any) {
         print("alert Picker")
+        
+        let vc = UIViewController()
+        vc.preferredContentSize = CGSize(width: screenWidth, height: screenHeight)
+        let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: screenWidth, height:screenHeight))
+        pickerView.dataSource = self
+        pickerView.delegate = self
+        
+        pickerView.selectRow(selectedRow, inComponent: 0, animated: false)
+        
+        vc.view.addSubview(pickerView)
+        pickerView.centerXAnchor.constraint(equalTo: vc.view.centerXAnchor).isActive = true
+        pickerView.centerYAnchor.constraint(equalTo: vc.view.centerYAnchor).isActive = true
+        
+        let alert = UIAlertController(title: "Select Background Colour", message: "", preferredStyle: .actionSheet)
+        
+        alert.popoverPresentationController?.sourceView = accountGroupTextField
+        alert.popoverPresentationController?.sourceRect = accountGroupTextField.bounds
+        
+        alert.setValue(vc, forKey: "contentViewController")
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (UIAlertAction) in
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Select", style: .default, handler: { (UIAlertAction) in
+            self.selectedRow = pickerView.selectedRow(inComponent: 0)
+            
+            self.accountGroupSelected = self.accountGroupList[self.selectedRow]
+            self.updateAccountGroupTextField()
+            
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func validateInput(_ sender: Any) {
@@ -164,4 +207,29 @@ class AddAccountTableViewController: UITableViewController {
      }
      */
     
+}
+
+extension AddAccountTableViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView
+        {
+            let label = UILabel(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 20))
+            label.text = accountGroupList[row].name
+            label.sizeToFit()
+            return label
+        }
+        
+        func numberOfComponents(in pickerView: UIPickerView) -> Int
+        {
+            return 1
+        }
+        
+        func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+        {
+            accountGroupList.count
+        }
+        
+        func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat
+        {
+            return 40
+        }
 }
