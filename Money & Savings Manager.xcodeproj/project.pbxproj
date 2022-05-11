@@ -16,6 +16,16 @@
 		4057208928293D4C00FFDA9F /* Money___Savings_ManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4057208828293D4C00FFDA9F /* Money___Savings_ManagerTests.swift */; };
 		4057209328293D4C00FFDA9F /* Money___Savings_ManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4057209228293D4C00FFDA9F /* Money___Savings_ManagerUITests.swift */; };
 		4057209528293D4C00FFDA9F /* Money___Savings_ManagerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4057209428293D4C00FFDA9F /* Money___Savings_ManagerUITestsLaunchTests.swift */; };
+		40F052A3282974080082A413 /* AccountListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F052A2282974080082A413 /* AccountListTableViewController.swift */; };
+		40F052A5282974490082A413 /* AddAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F052A4282974490082A413 /* AddAccountTableViewController.swift */; };
+		40F052A8282974830082A413 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F052A7282974830082A413 /* Account.swift */; };
+		40F052AA2829754E0082A413 /* AccountGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F052A92829754E0082A413 /* AccountGroup.swift */; };
+		40F052AC2829758B0082A413 /* IncomeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F052AB2829758B0082A413 /* IncomeCategory.swift */; };
+		40F052AE282975B10082A413 /* ExpenseCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F052AD282975B10082A413 /* ExpenseCategory.swift */; };
+		40F052B0282975CE0082A413 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F052AF282975CE0082A413 /* Transaction.swift */; };
+		40F052B3282975E70082A413 /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F052B2282975E70082A413 /* TransactionType.swift */; };
+		40F052B8282B90240082A413 /* PlistDataSourceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F052B7282B90240082A413 /* PlistDataSourceProtocols.swift */; };
+		40F052BA282B90C70082A413 /* ComplexDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F052B9282B90C70082A413 /* ComplexDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +59,16 @@
 		4057208E28293D4C00FFDA9F /* Money & Savings ManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Money & Savings ManagerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4057209228293D4C00FFDA9F /* Money___Savings_ManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Money___Savings_ManagerUITests.swift"; sourceTree = "<group>"; };
 		4057209428293D4C00FFDA9F /* Money___Savings_ManagerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Money___Savings_ManagerUITestsLaunchTests.swift"; sourceTree = "<group>"; };
+		40F052A2282974080082A413 /* AccountListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListTableViewController.swift; sourceTree = "<group>"; };
+		40F052A4282974490082A413 /* AddAccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountTableViewController.swift; sourceTree = "<group>"; };
+		40F052A7282974830082A413 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		40F052A92829754E0082A413 /* AccountGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountGroup.swift; sourceTree = "<group>"; };
+		40F052AB2829758B0082A413 /* IncomeCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeCategory.swift; sourceTree = "<group>"; };
+		40F052AD282975B10082A413 /* ExpenseCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCategory.swift; sourceTree = "<group>"; };
+		40F052AF282975CE0082A413 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		40F052B2282975E70082A413 /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
+		40F052B7282B90240082A413 /* PlistDataSourceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistDataSourceProtocols.swift; sourceTree = "<group>"; };
+		40F052B9282B90C70082A413 /* ComplexDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +119,9 @@
 		4057207028293D4B00FFDA9F /* Money & Savings Manager */ = {
 			isa = PBXGroup;
 			children = (
+				40F052B6282A54960082A413 /* Protocols */,
+				40F052A62829747A0082A413 /* Models */,
+				40F0529C282966450082A413 /* ViewController */,
 				4057207128293D4B00FFDA9F /* AppDelegate.swift */,
 				4057207328293D4B00FFDA9F /* SceneDelegate.swift */,
 				4057207528293D4B00FFDA9F /* ViewController.swift */,
@@ -125,6 +148,85 @@
 				4057209428293D4C00FFDA9F /* Money___Savings_ManagerUITestsLaunchTests.swift */,
 			);
 			path = "Money & Savings ManagerUITests";
+			sourceTree = "<group>";
+		};
+		40F0529C282966450082A413 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				40F0529D2829664E0082A413 /* Settings */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		40F0529D2829664E0082A413 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				40F052A1282966970082A413 /* Expense Category */,
+				40F052A02829668A0082A413 /* Income Category */,
+				40F0529F2829665A0082A413 /* Account Group */,
+				40F0529E282966550082A413 /* Account */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		40F0529E282966550082A413 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				40F052A2282974080082A413 /* AccountListTableViewController.swift */,
+				40F052A4282974490082A413 /* AddAccountTableViewController.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		40F0529F2829665A0082A413 /* Account Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Account Group";
+			sourceTree = "<group>";
+		};
+		40F052A02829668A0082A413 /* Income Category */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Income Category";
+			sourceTree = "<group>";
+		};
+		40F052A1282966970082A413 /* Expense Category */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Expense Category";
+			sourceTree = "<group>";
+		};
+		40F052A62829747A0082A413 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				40F052B1282975DB0082A413 /* Enum */,
+				40F052A7282974830082A413 /* Account.swift */,
+				40F052A92829754E0082A413 /* AccountGroup.swift */,
+				40F052AB2829758B0082A413 /* IncomeCategory.swift */,
+				40F052AD282975B10082A413 /* ExpenseCategory.swift */,
+				40F052AF282975CE0082A413 /* Transaction.swift */,
+				40F052B9282B90C70082A413 /* ComplexDataSource.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		40F052B1282975DB0082A413 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				40F052B2282975E70082A413 /* TransactionType.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		40F052B6282A54960082A413 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				40F052B7282B90240082A413 /* PlistDataSourceProtocols.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,9 +360,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40F052AC2829758B0082A413 /* IncomeCategory.swift in Sources */,
+				40F052AA2829754E0082A413 /* AccountGroup.swift in Sources */,
+				40F052AE282975B10082A413 /* ExpenseCategory.swift in Sources */,
 				4057207628293D4B00FFDA9F /* ViewController.swift in Sources */,
+				40F052BA282B90C70082A413 /* ComplexDataSource.swift in Sources */,
+				40F052B0282975CE0082A413 /* Transaction.swift in Sources */,
+				40F052A5282974490082A413 /* AddAccountTableViewController.swift in Sources */,
 				4057207228293D4B00FFDA9F /* AppDelegate.swift in Sources */,
 				4057207428293D4B00FFDA9F /* SceneDelegate.swift in Sources */,
+				40F052A3282974080082A413 /* AccountListTableViewController.swift in Sources */,
+				40F052B8282B90240082A413 /* PlistDataSourceProtocols.swift in Sources */,
+				40F052B3282975E70082A413 /* TransactionType.swift in Sources */,
+				40F052A8282974830082A413 /* Account.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
