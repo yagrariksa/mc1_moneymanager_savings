@@ -23,4 +23,5 @@ protocol PlistDataSourceProtocols {
     func updateDataComplex()
     func updateDataComplex(data: [ComplexDataSource])
     func updateAccount(_ account: Account)
+    func updateAccountGRoup(_ group: AccountGroup)
 }

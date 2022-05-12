@@ -45,6 +45,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate: PlistDataSourceProtocols {
+    func updateAccountGRoup(_ group: AccountGroup) {
+        if let index = accountGroupDataSource?.firstIndex(where: {$0.uid == group.uid}) {
+            accountGroupDataSource?[index] = group
+            saveAccountGroup(accountGroupDataSource)
+            updateDataComplex()
+        }
+    }
+    
     func updateDataComplex() {
         updateDataComplex(accounts: accountListDataSource, groups: accountGroupDataSource)
     }
