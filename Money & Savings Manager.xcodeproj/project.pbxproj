@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4041B410282DDDCC00C9DFF5 /* ExpenseCategoryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4041B40F282DDDCC00C9DFF5 /* ExpenseCategoryListTableViewController.swift */; };
+		4041B412282DDDE200C9DFF5 /* AddExpenseCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4041B411282DDDE200C9DFF5 /* AddExpenseCategoryTableViewController.swift */; };
 		4057207228293D4B00FFDA9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4057207128293D4B00FFDA9F /* AppDelegate.swift */; };
 		4057207428293D4B00FFDA9F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4057207328293D4B00FFDA9F /* SceneDelegate.swift */; };
 		4057207628293D4B00FFDA9F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4057207528293D4B00FFDA9F /* ViewController.swift */; };
@@ -46,6 +48,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4041B40F282DDDCC00C9DFF5 /* ExpenseCategoryListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCategoryListTableViewController.swift; sourceTree = "<group>"; };
+		4041B411282DDDE200C9DFF5 /* AddExpenseCategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseCategoryTableViewController.swift; sourceTree = "<group>"; };
 		4057206E28293D4B00FFDA9F /* Money & Savings Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Money & Savings Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4057207128293D4B00FFDA9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4057207328293D4B00FFDA9F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -195,6 +199,8 @@
 		40F052A1282966970082A413 /* Expense Category */ = {
 			isa = PBXGroup;
 			children = (
+				4041B40F282DDDCC00C9DFF5 /* ExpenseCategoryListTableViewController.swift */,
+				4041B411282DDDE200C9DFF5 /* AddExpenseCategoryTableViewController.swift */,
 			);
 			path = "Expense Category";
 			sourceTree = "<group>";
@@ -364,6 +370,8 @@
 				40F052AA2829754E0082A413 /* AccountGroup.swift in Sources */,
 				40F052AE282975B10082A413 /* ExpenseCategory.swift in Sources */,
 				4057207628293D4B00FFDA9F /* ViewController.swift in Sources */,
+				4041B412282DDDE200C9DFF5 /* AddExpenseCategoryTableViewController.swift in Sources */,
+				4041B410282DDDCC00C9DFF5 /* ExpenseCategoryListTableViewController.swift in Sources */,
 				40F052BA282B90C70082A413 /* ComplexDataSource.swift in Sources */,
 				40F052B0282975CE0082A413 /* Transaction.swift in Sources */,
 				40F052A5282974490082A413 /* AddAccountTableViewController.swift in Sources */,
