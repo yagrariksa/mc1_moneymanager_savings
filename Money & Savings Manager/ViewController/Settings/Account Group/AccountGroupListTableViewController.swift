@@ -66,6 +66,7 @@ class AccountGroupListTableViewController: UITableViewController, AddAccountGrou
             }
             tableView.insertRows(at: [IndexPath(row: row-1, section: 0)], with: .none )
         }
+        appDelegate.updateDataComplex()
     }
     
     
