@@ -23,6 +23,10 @@
 		40A1A065282D524100F1F52F /* AddIncomeCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1A064282D524100F1F52F /* AddIncomeCategoryTableViewController.swift */; };
 		40A1A067282D525000F1F52F /* IncomeCategoryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1A066282D525000F1F52F /* IncomeCategoryListTableViewController.swift */; };
 		40A1A069282D538B00F1F52F /* PlistIncomeExpenseCategoryDataSourceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1A068282D538B00F1F52F /* PlistIncomeExpenseCategoryDataSourceProtocols.swift */; };
+		40E41951282E0BB9005F011F /* BalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E41950282E0BB9005F011F /* BalanceViewController.swift */; };
+		40E41953282E21A0005F011F /* BalanceHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E41952282E21A0005F011F /* BalanceHeaderTableViewCell.swift */; };
+		40E41955282E2FC4005F011F /* TransactionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E41954282E2FC4005F011F /* TransactionHeaderTableViewCell.swift */; };
+		40E41957282E3028005F011F /* TransactionListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E41956282E3028005F011F /* TransactionListViewController.swift */; };
 		40F052A3282974080082A413 /* AccountListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F052A2282974080082A413 /* AccountListTableViewController.swift */; };
 		40F052A5282974490082A413 /* AddAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F052A4282974490082A413 /* AddAccountTableViewController.swift */; };
 		40F052A8282974830082A413 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F052A7282974830082A413 /* Account.swift */; };
@@ -73,6 +77,10 @@
 		40A1A064282D524100F1F52F /* AddIncomeCategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomeCategoryTableViewController.swift; sourceTree = "<group>"; };
 		40A1A066282D525000F1F52F /* IncomeCategoryListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeCategoryListTableViewController.swift; sourceTree = "<group>"; };
 		40A1A068282D538B00F1F52F /* PlistIncomeExpenseCategoryDataSourceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistIncomeExpenseCategoryDataSourceProtocols.swift; sourceTree = "<group>"; };
+		40E41950282E0BB9005F011F /* BalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewController.swift; sourceTree = "<group>"; };
+		40E41952282E21A0005F011F /* BalanceHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		40E41954282E2FC4005F011F /* TransactionHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		40E41956282E3028005F011F /* TransactionListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionListViewController.swift; sourceTree = "<group>"; };
 		40F052A2282974080082A413 /* AccountListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListTableViewController.swift; sourceTree = "<group>"; };
 		40F052A4282974490082A413 /* AddAccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountTableViewController.swift; sourceTree = "<group>"; };
 		40F052A7282974830082A413 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
@@ -133,6 +141,7 @@
 		4057207028293D4B00FFDA9F /* Money & Savings Manager */ = {
 			isa = PBXGroup;
 			children = (
+				40E4194B282E01BC005F011F /* View */,
 				40F052B6282A54960082A413 /* Protocols */,
 				40F052A62829747A0082A413 /* Models */,
 				40F0529C282966450082A413 /* ViewController */,
@@ -167,6 +176,7 @@
 		40E41949282DFA7F005F011F /* Balance */ = {
 			isa = PBXGroup;
 			children = (
+				40E41950282E0BB9005F011F /* BalanceViewController.swift */,
 			);
 			path = Balance;
 			sourceTree = "<group>";
@@ -174,8 +184,18 @@
 		40E4194A282DFA87005F011F /* Transaction */ = {
 			isa = PBXGroup;
 			children = (
+				40E41956282E3028005F011F /* TransactionListViewController.swift */,
 			);
 			path = Transaction;
+			sourceTree = "<group>";
+		};
+		40E4194B282E01BC005F011F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				40E41952282E21A0005F011F /* BalanceHeaderTableViewCell.swift */,
+				40E41954282E2FC4005F011F /* TransactionHeaderTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		40F0529C282966450082A413 /* ViewController */ = {
@@ -400,9 +420,11 @@
 				40A1A067282D525000F1F52F /* IncomeCategoryListTableViewController.swift in Sources */,
 				40F052AC2829758B0082A413 /* IncomeCategory.swift in Sources */,
 				40F052AA2829754E0082A413 /* AccountGroup.swift in Sources */,
+				40E41955282E2FC4005F011F /* TransactionHeaderTableViewCell.swift in Sources */,
 				40F052AE282975B10082A413 /* ExpenseCategory.swift in Sources */,
 				4057207628293D4B00FFDA9F /* ViewController.swift in Sources */,
 				4041B412282DDDE200C9DFF5 /* AddExpenseCategoryTableViewController.swift in Sources */,
+				40E41957282E3028005F011F /* TransactionListViewController.swift in Sources */,
 				4041B410282DDDCC00C9DFF5 /* ExpenseCategoryListTableViewController.swift in Sources */,
 				40F052BA282B90C70082A413 /* ComplexDataSource.swift in Sources */,
 				40A1A05F282D45EE00F1F52F /* AccountGroupListTableViewController.swift in Sources */,
@@ -415,7 +437,9 @@
 				40F052B8282B90240082A413 /* PlistDataSourceProtocols.swift in Sources */,
 				40F052B3282975E70082A413 /* TransactionType.swift in Sources */,
 				40F052A8282974830082A413 /* Account.swift in Sources */,
+				40E41951282E0BB9005F011F /* BalanceViewController.swift in Sources */,
 				40A1A065282D524100F1F52F /* AddIncomeCategoryTableViewController.swift in Sources */,
+				40E41953282E21A0005F011F /* BalanceHeaderTableViewCell.swift in Sources */,
 				40A1A061282D460B00F1F52F /* AddAccountGroupTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
