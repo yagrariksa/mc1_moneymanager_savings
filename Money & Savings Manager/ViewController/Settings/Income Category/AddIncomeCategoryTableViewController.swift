@@ -25,6 +25,7 @@ class AddIncomeCategoryTableViewController: UITableViewController {
 
         if let income = income {
             nameTextField.text = income.name
+            title = "Edit Income Category"
         }
         
         updateSaveButton()
