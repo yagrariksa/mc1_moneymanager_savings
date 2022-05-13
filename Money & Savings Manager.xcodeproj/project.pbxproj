@@ -18,6 +18,9 @@
 		4057208928293D4C00FFDA9F /* Money___Savings_ManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4057208828293D4C00FFDA9F /* Money___Savings_ManagerTests.swift */; };
 		4057209328293D4C00FFDA9F /* Money___Savings_ManagerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4057209228293D4C00FFDA9F /* Money___Savings_ManagerUITests.swift */; };
 		4057209528293D4C00FFDA9F /* Money___Savings_ManagerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4057209428293D4C00FFDA9F /* Money___Savings_ManagerUITestsLaunchTests.swift */; };
+		40A1A065282D524100F1F52F /* AddIncomeCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1A064282D524100F1F52F /* AddIncomeCategoryTableViewController.swift */; };
+		40A1A067282D525000F1F52F /* IncomeCategoryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1A066282D525000F1F52F /* IncomeCategoryListTableViewController.swift */; };
+		40A1A069282D538B00F1F52F /* PlistIncomeExpenseCategoryDataSourceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1A068282D538B00F1F52F /* PlistIncomeExpenseCategoryDataSourceProtocols.swift */; };
 		40F052A3282974080082A413 /* AccountListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F052A2282974080082A413 /* AccountListTableViewController.swift */; };
 		40F052A5282974490082A413 /* AddAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F052A4282974490082A413 /* AddAccountTableViewController.swift */; };
 		40F052A8282974830082A413 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F052A7282974830082A413 /* Account.swift */; };
@@ -63,6 +66,9 @@
 		4057208E28293D4C00FFDA9F /* Money & Savings ManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Money & Savings ManagerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4057209228293D4C00FFDA9F /* Money___Savings_ManagerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Money___Savings_ManagerUITests.swift"; sourceTree = "<group>"; };
 		4057209428293D4C00FFDA9F /* Money___Savings_ManagerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Money___Savings_ManagerUITestsLaunchTests.swift"; sourceTree = "<group>"; };
+		40A1A064282D524100F1F52F /* AddIncomeCategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomeCategoryTableViewController.swift; sourceTree = "<group>"; };
+		40A1A066282D525000F1F52F /* IncomeCategoryListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeCategoryListTableViewController.swift; sourceTree = "<group>"; };
+		40A1A068282D538B00F1F52F /* PlistIncomeExpenseCategoryDataSourceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistIncomeExpenseCategoryDataSourceProtocols.swift; sourceTree = "<group>"; };
 		40F052A2282974080082A413 /* AccountListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListTableViewController.swift; sourceTree = "<group>"; };
 		40F052A4282974490082A413 /* AddAccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountTableViewController.swift; sourceTree = "<group>"; };
 		40F052A7282974830082A413 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
@@ -192,6 +198,8 @@
 		40F052A02829668A0082A413 /* Income Category */ = {
 			isa = PBXGroup;
 			children = (
+				40A1A064282D524100F1F52F /* AddIncomeCategoryTableViewController.swift */,
+				40A1A066282D525000F1F52F /* IncomeCategoryListTableViewController.swift */,
 			);
 			path = "Income Category";
 			sourceTree = "<group>";
@@ -231,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				40F052B7282B90240082A413 /* PlistDataSourceProtocols.swift */,
+				40A1A068282D538B00F1F52F /* PlistIncomeExpenseCategoryDataSourceProtocols.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -366,6 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40A1A067282D525000F1F52F /* IncomeCategoryListTableViewController.swift in Sources */,
 				40F052AC2829758B0082A413 /* IncomeCategory.swift in Sources */,
 				40F052AA2829754E0082A413 /* AccountGroup.swift in Sources */,
 				40F052AE282975B10082A413 /* ExpenseCategory.swift in Sources */,
@@ -378,9 +388,11 @@
 				4057207228293D4B00FFDA9F /* AppDelegate.swift in Sources */,
 				4057207428293D4B00FFDA9F /* SceneDelegate.swift in Sources */,
 				40F052A3282974080082A413 /* AccountListTableViewController.swift in Sources */,
+				40A1A069282D538B00F1F52F /* PlistIncomeExpenseCategoryDataSourceProtocols.swift in Sources */,
 				40F052B8282B90240082A413 /* PlistDataSourceProtocols.swift in Sources */,
 				40F052B3282975E70082A413 /* TransactionType.swift in Sources */,
 				40F052A8282974830082A413 /* Account.swift in Sources */,
+				40A1A065282D524100F1F52F /* AddIncomeCategoryTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

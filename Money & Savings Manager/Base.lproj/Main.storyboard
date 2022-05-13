@@ -510,19 +510,22 @@
         <!--Income Category-->
         <scene sceneID="VcJ-2u-IKo">
             <objects>
-                <tableViewController id="Q1H-wx-Jbm" sceneMemberID="viewController">
+                <tableViewController id="Q1H-wx-Jbm" customClass="IncomeCategoryListTableViewController" customModule="Money___Savings_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="AkX-5K-y2g">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="8YQ-qY-mct">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="incomeCategoryCell" id="8YQ-qY-mct">
                                 <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8YQ-qY-mct" id="V7j-C0-yZA">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="LYy-ip-Vzc" kind="presentation" id="D9H-Dd-nHg"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -531,11 +534,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Income Category" id="A3J-WA-pJC">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="G8S-ed-HqH">
-                            <connections>
-                                <segue destination="LYy-ip-Vzc" kind="presentation" id="CC7-Cg-1ON"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="plus" catalog="system" id="G8S-ed-HqH">
+                                <connections>
+                                    <segue destination="LYy-ip-Vzc" kind="presentation" id="CC7-Cg-1ON"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Edit" id="REe-hN-Pqu">
+                                <connections>
+                                    <action selector="editButtonTapped:" destination="Q1H-wx-Jbm" id="XDw-yt-U5b"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="agW-PQ-vq4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -545,7 +555,7 @@
         <!--Add Income Category-->
         <scene sceneID="G4v-Xt-usX">
             <objects>
-                <tableViewController id="Tlo-FX-W67" sceneMemberID="viewController">
+                <tableViewController id="Tlo-FX-W67" customClass="AddIncomeCategoryTableViewController" customModule="Money___Savings_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" id="238-jY-jPi">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -564,6 +574,9 @@
                                                     <rect key="frame" x="20" y="11.000000000000002" width="350" height="19.666666666666671"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="nameOnEdit:" destination="Tlo-FX-W67" eventType="editingChanged" id="rqr-GT-rQX"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -585,11 +598,23 @@
                     <navigationItem key="navigationItem" title="Add Income Category" id="By3-jY-HFA">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="0wg-1X-2KE">
                             <color key="tintColor" systemColor="systemRedColor"/>
+                            <connections>
+                                <segue destination="HHF-sg-4gF" kind="unwind" unwindAction="unwindToIncomeCategoryListTableViewWithSegue:" id="qJC-z1-L9G"/>
+                            </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="Rvy-gy-zGC"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="Rvy-gy-zGC">
+                            <connections>
+                                <segue destination="HHF-sg-4gF" kind="unwind" identifier="saveIncomeCategory" unwindAction="unwindToIncomeCategoryListTableViewWithSegue:" id="Aht-Vu-EjO"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nameTextField" destination="sx9-pY-VeJ" id="3Hl-Pt-3cX"/>
+                        <outlet property="saveBarButton" destination="Rvy-gy-zGC" id="N7L-5t-4qZ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kyn-1l-S4D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="HHF-sg-4gF" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3137" y="2230"/>
         </scene>
@@ -604,7 +629,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Tlo-FX-W67" kind="relationship" relationship="rootViewController" id="XzL-Y8-RI6"/>
+                        <segue destination="Tlo-FX-W67" kind="relationship" relationship="rootViewController" destinationCreationSelector="editIncomeCategory:sender:" id="XzL-Y8-RI6"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yUT-AU-Dvw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -717,6 +742,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="D9H-Dd-nHg"/>
         <segue reference="kv2-2l-zWf"/>
     </inferredMetricsTieBreakers>
     <resources>
