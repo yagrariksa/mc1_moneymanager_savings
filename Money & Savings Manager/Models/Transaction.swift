@@ -16,6 +16,7 @@ struct Transaction: Codable, Equatable {
     var expenseCategoryUid: String
     var incomeCategoryUid: String
     var transferToUid: String
+    var date: Date
 
     static func ==(lhs: Transaction, rhs: Transaction) -> Bool{
         return lhs.uid == rhs.uid
@@ -49,6 +50,15 @@ struct Transaction: Codable, Equatable {
             }
         }
         return nil
+    }
+    
+    static func moneyToString(_ money: Int) -> String {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencyCode = "IDR"
+        let uang = formatter.string(for: money) ?? "IDR 0"
+        
+        return "Rp \(uang[4...])"
     }
     
 }

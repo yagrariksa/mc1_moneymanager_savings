@@ -17,6 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var incomeCategoryDataSource: [IncomeCategory]?
     var expenseCategoryDataSource: [ExpenseCategory]?
 
+    var transactionList: [Transaction] = [Transaction]()
+    var transactionGroupList: [TransactionGroup] = [TransactionGroup]()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -206,6 +209,62 @@ extension AppDelegate: PlisIncomeExpenseCategoryDataSourceProtocols {
         }
     }
     
+}
+
+extension AppDelegate {
+  
     
+    func generateTransactionDummy() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy/MM/dd HH:mm"
+        let mf = DateFormatter()
+        mf.dateFormat = "dd"
+        
+        guard let accountList = accountListDataSource,
+              let expenseList = expenseCategoryDataSource,
+              let incomeList = incomeCategoryDataSource else {return}
+       
+        for _ in 0..<20 {
+            transactionList = [Transaction]()
+            
+            let date = formatter.date(from: "2022/5/\(Int.random(in: 1..<14)) \(Int.random(in: 1..<24)):\(Int.random(in: 1..<60))")
+            let transaction = Transaction(type: ["Income","Expense","Transfer"].randomElement()! , accountUid: accountList[Int.random(in: 0..<accountList.count)].uid, note: "Note", amount: Int.random(in: 1000..<1000000), uid: UUID().uuidString, expenseCategoryUid: expenseList[Int.random(in: 0..<expenseList.count)].uid, incomeCategoryUid: incomeList[Int.random(in: 0..<incomeList.count)].uid, transferToUid: accountList[Int.random(in: 0..<accountList.count)].uid, date: date!)
+            
+            transactionList.append(transaction)
+        }
+        print("transaction count : \(transactionList.count)")
+    }
+    
+    func updateTransactionGroupDataSource() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd"
+        let dateMaker = DateFormatter()
+        dateMaker.dateFormat = "yyyy/MM/dd"
+        for i in 1..<14 {
+            let data = transactionList.filter {Int(formatter.string(from: $0.date)) == i}
+            transactionGroupList = [TransactionGroup]()
+            
+            if data.count > 0 {
+                transactionGroupList.append(TransactionGroup(date: dateMaker.date(from: "2022/05/\(i)")!, list: data, income: countIncome(data), expense: countExpense(data)))
+            }
+        }
+    }
+    
+    func countIncome(_ data: [Transaction]) -> Int {
+        var count = 0
+        for transaction in data.filter({$0.type == "Income"}) {
+            count+=transaction.amount
+        }
+        print(count)
+        return count
+    }
+    
+    func countExpense(_ data: [Transaction]) -> Int {
+        var count = 0
+        for transaction in data.filter({$0.type == "Expense"}) {
+            count+=transaction.amount
+        }
+        return count
+    }
 }
 

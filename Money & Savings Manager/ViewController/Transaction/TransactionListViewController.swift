@@ -13,6 +13,14 @@ class TransactionListViewController: UIViewController {
     @IBOutlet var moneyStackContainer: UIStackView!
     @IBOutlet var separatorView: UIView!
     
+    let appDelegate = UIApplication.shared.delegate as? AppDelegate
+    
+    var accountList: [Account] = [Account]()
+    var expenseList: [ExpenseCategory] = [ExpenseCategory]()
+    
+    var incomeList: [IncomeCategory] = [IncomeCategory]()
+    
+    var transactionGroupList: [TransactionGroup] = [TransactionGroup]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +28,27 @@ class TransactionListViewController: UIViewController {
         view.bringSubviewToFront(monthViewContainer)
         view.bringSubviewToFront(moneyStackContainer)
         view.bringSubviewToFront(separatorView)
-
-        // Do any additional setup after loading the view.
+        
+        if let data = appDelegate?.accountListDataSource {
+            accountList = data
+        }
+        
+        if let income = appDelegate?.incomeCategoryDataSource {
+            incomeList = income
+        }
+        
+        if let expense = appDelegate?.expenseCategoryDataSource {
+            expenseList = expense
+        }
+        
+        appDelegate?.generateTransactionDummy()
+        appDelegate?.updateTransactionGroupDataSource()
+        
+        if let transaction = appDelegate?.transactionGroupList {
+            transactionGroupList = transaction
+        }
     }
-    
+  
 
     /*
     // MARK: - Navigation
@@ -40,53 +65,103 @@ class TransactionListViewController: UIViewController {
 extension TransactionListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        4
+        return transactionGroupList.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Int.random(in: 2..<5)
+        return transactionGroupList[section].list.count + 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 40
+        }
+        return 55
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let section = indexPath.section
+        let row = indexPath.row
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "transactionHeader", for: indexPath) as! TransactionHeaderTableViewCell
             
-            cell.dateLabel.text = "16"
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd"
+            let tanggal = Int(dateFormatter.string(from: transactionGroupList[section].date))!
+            cell.dateLabel.text = "\(tanggal)"
             
-            cell.dayLabel.text = "Sun"
+          
+            let fCalendar = Calendar.current.component(.weekday, from: transactionGroupList[section].date)
+            cell.dayLabel.text = "\(DateFormatter().weekdaySymbols[fCalendar - 1])"
+            
+            
             cell.dayLabel.textColor = UIColor.white
             
-            cell.dayViewContainer.backgroundColor = UIColor.red
+            if fCalendar == 1 {
+                cell.dayViewContainer.backgroundColor = UIColor.systemRed
+            }else if fCalendar == 7 {
+                cell.dayViewContainer.backgroundColor = UIColor.systemBlue
+            }else{
+                cell.dayViewContainer.backgroundColor = UIColor.systemGray
+            }
+            
             cell.dayViewContainer.layer.cornerRadius = 4
             
-            cell.incomeLabel.text = "Rp 200.000"
-            cell.expenseLabel.text = "Rp 0"
+            cell.incomeLabel.text = "\(Transaction.moneyToString(transactionGroupList[section].income))"
+            cell.expenseLabel.text = "\(Transaction.moneyToString(transactionGroupList[section].expense))"
             
             return cell
         }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "transactionCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "transactionCell", for: indexPath) as! TransactionTableViewCell
             
-            var content = cell.defaultContentConfiguration()
+            let data = transactionGroupList[section].list[row-1]
+        
+            let clockFormatter = DateFormatter()
+            clockFormatter.dateFormat = "HH:mm"
             
-            content.text = "Account"
             
-            let amount = Int.random(in: -100..<100)
-            content.secondaryText = "Rp \(amount)"
-            
-            content.secondaryTextProperties.color = UIColor { (color) in
-                if amount > 0 {
-                    return .systemBlue
-                }else{
-                    return .systemRed
-                }
+            cell.noteLabel.text = data.note
+            cell.clockLabel.text = clockFormatter.string(from: data.date)
+            let acc = accountList.first(where: {$0.uid == data.accountUid})?.name
+            cell.accountLabel.text = acc
+            cell.amountLabel.text = "\(Transaction.moneyToString(data.amount))"
+            switch data.type {
+            case "Income":
+                cell.typeLabel.text = incomeList.first(where: {$0.uid == data.incomeCategoryUid})?.name
+                cell.amountLabel.textColor = UIColor.systemBlue
+                
+            case "Expense":
+                cell.typeLabel.text = expenseList.first(where: {$0.uid == data.expenseCategoryUid})?.name
+                cell.amountLabel.textColor = UIColor.systemRed
+                
+            default:
+                cell.typeLabel.text = "Transfer"
+                let penerima = accountList.first(where: {$0.uid == data.transferToUid})?.name
+                cell.accountLabel.text = "\(acc!) -> \(penerima!)"
+                cell.amountLabel.textColor = UIColor.secondaryLabel
                 
             }
-            
-            cell.contentConfiguration = content
             
             return cell
             
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return .leastNonzeroMagnitude
+    }
+}
+
+struct TransactionGroup {
+    var date: Date
+    var list: [Transaction]
+    var income: Int
+    var expense: Int
 }
