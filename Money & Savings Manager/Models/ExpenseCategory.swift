@@ -40,14 +40,17 @@ struct ExpenseCategory: Codable, Equatable {
         return nil
     }
     
-    static func seed() -> [IncomeCategory] {
+    static func seed() -> [ExpenseCategory] {
         return [
-            IncomeCategory(name: "Salary", uid: UUID().uuidString),
-            IncomeCategory(name: "Bonus", uid: UUID().uuidString),
-            IncomeCategory(name: "Loan", uid: UUID().uuidString),
-            IncomeCategory(name: "Investment", uid: UUID().uuidString),
-            IncomeCategory(name: "Petty Cash", uid: UUID().uuidString),
-            IncomeCategory(name: "Other", uid: UUID().uuidString),
+            ExpenseCategory(name: "Food", uid: UUID().uuidString),
+            ExpenseCategory(name: "Transportation", uid: UUID().uuidString),
+            ExpenseCategory(name: "Household", uid: UUID().uuidString),
+            ExpenseCategory(name: "Self-Development", uid: UUID().uuidString),
+            ExpenseCategory(name: "Social Life", uid: UUID().uuidString),
+            ExpenseCategory(name: "Apparel", uid: UUID().uuidString),
+            ExpenseCategory(name: "Culture", uid: UUID().uuidString),
+            ExpenseCategory(name: "Health", uid: UUID().uuidString),
+            ExpenseCategory(name: "Education", uid: UUID().uuidString),
         ]
     }
 }

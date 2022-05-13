@@ -190,6 +190,12 @@ extension AppDelegate: PlisIncomeExpenseCategoryDataSourceProtocols {
         }else{
             incomeCategoryDataSource = IncomeCategory.seed()
         }
+        
+        if let expense = ExpenseCategory.loadData() {
+            expenseCategoryDataSource = expense
+        }else{
+            expenseCategoryDataSource = ExpenseCategory.seed()
+        }
     }
     
     

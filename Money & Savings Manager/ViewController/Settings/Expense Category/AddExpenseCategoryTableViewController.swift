@@ -7,28 +7,81 @@
 
 import UIKit
 
-class AddExpenseCategoryTableViewController: UITableViewController {
+protocol AddExpenseCategoryTableViewControllerDelegate: AnyObject {
+    func doSomething(yes: Bool)
+}
 
+class AddExpenseCategoryTableViewController: UITableViewController {
+    
+    weak var delegate: AddExpenseCategoryTableViewControllerDelegate?
+    
+    var expense: ExpenseCategory?
+
+    @IBOutlet var nameTextField: UITextField!
+    
+    @IBOutlet var saveButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if let expense = expense {
+            nameTextField.text = expense.name
+            title = "Edit Expense Category"
+        }
+        updateSaveButton()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        delegate?.doSomething(yes: true)
+    }
+    
+    init?(coder: NSCoder, expense: ExpenseCategory) {
+        self.expense = expense
+        super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    func updateSaveButton() {
+        let name = nameTextField.text ?? ""
+        saveButton.isEnabled = !name.isEmpty
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "saveExpenseCategory" else {return}
+        
+        if expense != nil {
+            expense?.name = nameTextField.text ?? ""
+        }else{
+            expense = ExpenseCategory(name: nameTextField.text ?? "", uid: UUID().uuidString)
+        }
+    }
+    
+    @IBAction func nameOnEDit(_ sender: Any) {
+        updateSaveButton()
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
     /*

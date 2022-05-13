@@ -267,20 +267,20 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="bYU-Nx-SYU">
-                                        <rect key="frame" x="0.0" y="57.333332061767578" width="390" height="41.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="57.333332061767578" width="390" height="41.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bYU-Nx-SYU" id="UMJ-T0-37d">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="41.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="41.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3MZ-Tu-LBR">
-                                                    <rect key="frame" x="20" y="11.000000000000002" width="85.666666666666671" height="19.666666666666671"/>
+                                                    <rect key="frame" x="20" y="10.999999999999998" width="85.666666666666671" height="19.333333333333329"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fQ5-AR-XgD">
-                                                    <rect key="frame" x="108.66666666666666" y="11.000000000000002" width="261.33333333333337" height="19.666666666666671"/>
+                                                    <rect key="frame" x="108.66666666666666" y="10.999999999999998" width="261.33333333333337" height="19.333333333333329"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
@@ -301,20 +301,20 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="dJd-gr-uP7">
-                                        <rect key="frame" x="0.0" y="99" width="390" height="41.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="98.666664123535156" width="390" height="41.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dJd-gr-uP7" id="En7-TI-Q9x">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="41.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="41.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AwQ-fZ-KzU">
-                                                    <rect key="frame" x="20" y="11.000000000000002" width="85.666666666666671" height="19.666666666666671"/>
+                                                    <rect key="frame" x="20" y="10.999999999999998" width="85.666666666666671" height="19.333333333333329"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4pZ-tL-NZr">
-                                                    <rect key="frame" x="108.66666666666666" y="11.000000000000002" width="261.33333333333337" height="19.666666666666671"/>
+                                                    <rect key="frame" x="108.66666666666666" y="10.999999999999998" width="261.33333333333337" height="19.333333333333329"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -332,20 +332,20 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="86R-uF-RaM">
-                                        <rect key="frame" x="0.0" y="140.66666793823242" width="390" height="41.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="139.99999618530273" width="390" height="41.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="86R-uF-RaM" id="Wtk-of-ted">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="41.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="41.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xhS-S0-qPJ">
-                                                    <rect key="frame" x="20" y="11.000000000000002" width="85.666666666666671" height="19.666666666666671"/>
+                                                    <rect key="frame" x="20" y="10.999999999999998" width="85.666666666666671" height="19.333333333333329"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Note" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gRB-Jj-XcD">
-                                                    <rect key="frame" x="108.66666666666666" y="11.000000000000002" width="261.33333333333337" height="19.666666666666671"/>
+                                                    <rect key="frame" x="108.66666666666666" y="10.999999999999998" width="261.33333333333337" height="19.333333333333329"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -414,14 +414,14 @@
                             <tableViewSection id="sQB-50-DLC">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="4O7-Fn-QTJ">
-                                        <rect key="frame" x="0.0" y="18" width="390" height="41.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="18" width="390" height="41.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4O7-Fn-QTJ" id="Kli-1z-08a">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="41.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="41.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Group Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jXR-0j-VaC">
-                                                    <rect key="frame" x="20" y="11.000000000000002" width="350" height="19.666666666666671"/>
+                                                    <rect key="frame" x="20" y="10.999999999999998" width="350" height="19.333333333333329"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -564,14 +564,14 @@
                             <tableViewSection id="OOa-LG-f0c">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="NLL-S9-DC7">
-                                        <rect key="frame" x="0.0" y="18" width="390" height="41.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="18" width="390" height="41.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NLL-S9-DC7" id="ths-Wb-ETs">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="41.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="41.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Income Category Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sx9-pY-VeJ">
-                                                    <rect key="frame" x="20" y="11.000000000000002" width="350" height="19.666666666666671"/>
+                                                    <rect key="frame" x="20" y="10.999999999999998" width="350" height="19.333333333333329"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
@@ -645,13 +645,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="PSm-og-SnP">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="expenseCategoryCell" id="PSm-og-SnP">
                                 <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="43.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PSm-og-SnP" id="TB0-fl-c2T">
                                     <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Xkt-re-Unh" kind="presentation" id="Gfi-Fw-eeB"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -660,11 +663,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Expense Category" id="TcD-y1-75r">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="Hjt-CH-Tqk">
-                            <connections>
-                                <segue destination="Xkt-re-Unh" kind="presentation" id="ov4-Ap-VTS"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" image="plus" catalog="system" id="Hjt-CH-Tqk">
+                                <connections>
+                                    <segue destination="Xkt-re-Unh" kind="presentation" id="ov4-Ap-VTS"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Edit" id="3ci-rb-2Jo">
+                                <connections>
+                                    <action selector="editButtonTapped:" destination="mIb-G7-u04" id="o6b-HN-mSN"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fDc-q7-IW1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -683,16 +693,19 @@
                             <tableViewSection id="i4w-LU-EoO">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="JEV-zT-43d">
-                                        <rect key="frame" x="0.0" y="18" width="390" height="41.333332061767578"/>
+                                        <rect key="frame" x="0.0" y="18" width="390" height="41"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JEV-zT-43d" id="eP2-gq-A5f">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="41.333332061767578"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="41"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Expense Category Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9vJ-9L-iPT">
-                                                    <rect key="frame" x="20" y="10.999999999999998" width="350" height="19.333333333333329"/>
+                                                    <rect key="frame" x="20" y="11" width="350" height="19"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="nameOnEDit:" destination="kS3-MF-TYP" eventType="editingChanged" id="xbb-fc-Tt5"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -714,11 +727,23 @@
                     <navigationItem key="navigationItem" title="Add Expense Category" id="pQx-Uw-SgA">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="ODu-Lh-PRf">
                             <color key="tintColor" systemColor="systemRedColor"/>
+                            <connections>
+                                <segue destination="COk-06-Hls" kind="unwind" unwindAction="unwindToExpenseCategoryListTableViewWithSegue:" id="F3V-qK-zga"/>
+                            </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="3LF-jA-tku"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="3LF-jA-tku">
+                            <connections>
+                                <segue destination="COk-06-Hls" kind="unwind" identifier="saveExpenseCategory" unwindAction="unwindToExpenseCategoryListTableViewWithSegue:" id="u75-hn-Tlm"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="nameTextField" destination="9vJ-9L-iPT" id="ef1-OD-jsi"/>
+                        <outlet property="saveButton" destination="3LF-jA-tku" id="VJT-ZB-Ypr"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="twu-PP-dEw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="COk-06-Hls" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3137" y="2927"/>
         </scene>
@@ -733,7 +758,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="kS3-MF-TYP" kind="relationship" relationship="rootViewController" id="4Qg-kU-Loq"/>
+                        <segue destination="kS3-MF-TYP" kind="relationship" relationship="rootViewController" destinationCreationSelector="editExpenseCategory:sender:" id="4Qg-kU-Loq"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jx8-TQ-rbh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -742,6 +767,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="Gfi-Fw-eeB"/>
         <segue reference="D9H-Dd-nHg"/>
         <segue reference="kv2-2l-zWf"/>
     </inferredMetricsTieBreakers>
