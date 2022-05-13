@@ -25,6 +25,7 @@ class AddAccountGroupTableViewController: UITableViewController {
         
         if let group = group {
             nameTextField.text = group.name
+            title = "Edit Account Group"
         }
         
         updateSaveButton()
