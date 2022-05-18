@@ -12,6 +12,7 @@ struct Account: Codable, Equatable {
     var uid: String
     var group: AccountGroup
     var groupUid: String
+    var amount: Int?
     
     static func ==(lhs: Account, rhs: Account) -> Bool {
         return lhs.uid == rhs.uid

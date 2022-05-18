@@ -9,16 +9,20 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var accountGroupDataSource: [AccountGroup]?
     var accountListDataSource: [Account]?
     var complexDataSource: [ComplexDataSource] = [ComplexDataSource]()
     
     var incomeCategoryDataSource: [IncomeCategory]?
     var expenseCategoryDataSource: [ExpenseCategory]?
-
+    
     var transactionList: [Transaction] = [Transaction]()
     var transactionGroupList: [TransactionGroup] = [TransactionGroup]()
+    var dateTransactionListHelper: [String] = [String]()
+    
+    var balanceGroupDataSource: [BalanceGroup] = [BalanceGroup]()
+    
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -28,11 +32,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         updateAccountAndGroupDataComplex()
         loadDataIncomeExcomeCategory()
         
+        generateTransactionDummy()
+        updateTransactionGroupDataSource()
+        
+        setupBalanceDataSource()
+        
         return true
     }
-
+    
     // MARK: UISceneSession Lifecycle
-
+    
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.
@@ -41,14 +50,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
-
+    
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
         debugPrint("💙 didDiscardSceneSessions")
     }
-
+    
 }
 
 extension AppDelegate {
@@ -92,7 +101,15 @@ extension AppDelegate {
         }
     }
     
-
+    func updateAccountAmount(_ uid: String, amount: Int){
+        if let index = accountListDataSource?.firstIndex(where: {$0.uid == uid}) {
+            accountListDataSource?[index].amount = amount
+            saveAccount(accountListDataSource)
+            updateAccountAndGroupDataComplex()
+        }
+    }
+    
+    
     func addAccount(_ account: Account) {
         accountListDataSource?.append(account)
         saveAccount(accountListDataSource)
@@ -212,7 +229,7 @@ extension AppDelegate {
 }
 
 extension AppDelegate {
-  
+    
     
     func generateTransactionDummy() {
         transactionList = [Transaction]()
@@ -231,15 +248,14 @@ extension AppDelegate {
                 type: "Income",
                 accountUid: acc.uid,
                 note: "MODIFIED BALANCE",
-                amount: Int.random(in: 100000..<1000000),
+                amount: Int.random(in: 100..<1000) * 1000,
                 uid: UUID().uuidString,
                 targetUid: "MODIFIEDBALANCE",
                 date: formatter.date(from: "2022/04/20 00:00")!
             )
-            
             transactionList.append(transaction)
         }
-       
+        
         for _ in 0..<20 {
             
             
@@ -261,7 +277,7 @@ extension AppDelegate {
                 type: typeTransaction ,
                 accountUid: accountList[Int.random(in: 0..<accountList.count)].uid,
                 note: "Note",
-                amount: Int.random(in: 1000..<1000000), uid: UUID().uuidString,
+                amount: Int.random(in: 1..<1000) * 1000, uid: UUID().uuidString,
                 targetUid: targetUid,
                 date: date!
             )
@@ -270,27 +286,32 @@ extension AppDelegate {
         }
         
         transactionList.sort(by: {$0.date < $1.date})
-        for i in transactionList {
-            print(i.date)
-        }
-        print("transaction count : \(transactionList.count)")
+        
+        dateTransactionListHelper = Array(Set(transactionList.map({$0.date.formatted(date: .numeric, time: .omitted)})))
+        //        for i in transactionList {
+        //            print(i.date)
+        //        }
+        //        print("transaction count : \(transactionList.count)")
     }
     
     func updateTransactionGroupDataSource() {
         transactionGroupList = [TransactionGroup]()
         
+        //        refactor this code
         let formatter = DateFormatter()
         formatter.dateFormat = "dd"
         let dateMaker = DateFormatter()
         dateMaker.dateFormat = "yyyy/MM/dd"
         
-        for i in 1..<14 {
-            let data = transactionList.filter {Int(formatter.string(from: $0.date)) == i}
+        for i in dateTransactionListHelper {
+            let data = transactionList.filter {$0.date.formatted(date: .numeric, time: .omitted) == i}
             
             if data.count > 0 {
-                transactionGroupList.append(TransactionGroup(date: dateMaker.date(from: "2022/05/\(i)")!, list: data, income: countIncome(data), expense: countExpense(data)))
+                transactionGroupList.append(TransactionGroup(date: data[0].date, list: data, income: countIncome(data), expense: countExpense(data)))
             }
         }
+        
+        transactionGroupList.sort(by: {$0.date > $1.date})
     }
     
     func countIncome(_ data: [Transaction]) -> Int {
@@ -318,6 +339,67 @@ extension AppDelegate {
         }
         return (income, expense, income-expense)
     }
+}
+
+extension AppDelegate {
+    func countBalance(){
+        guard let list = accountListDataSource else {return}
+        for acc in list {
+            // find modif-balance
+            print(acc.name)
+            let modifbal = transactionList.last(where: {$0.targetUid == "MODIFIEDBALANCE" && $0.accountUid == acc.uid
+            })
+            
+            
+            // find related transaction
+            let outtrans = transactionList.filter {$0.accountUid == acc.uid && $0.targetUid != "MODIFIEDBALANCE"}
+            
+            let intrans = transactionList.filter {$0.targetUid == acc.uid && $0.type == "Transfer"}
+            
+            // do calculation
+            guard let bal = modifbal else {return}
+            print("💰")
+            print(acc.name)
+            print(bal.amount)
+            var balance = bal.amount
+            
+            for i in outtrans {
+                if i.type == "Income"{
+                    balance += i.amount
+                }else{
+                    balance -= i.amount
+                }
+            }
+            
+            for i in intrans {
+                balance += i.amount
+            }
+            
+            // present value
+            updateAccountAmount(acc.uid, amount: balance)
+        }
+    }
+    
+    func setupBalanceDataSource() {
+        balanceGroupDataSource = [BalanceGroup]()
+        countBalance()
+        
+        guard let groups = accountGroupDataSource, let accounts = accountListDataSource else {return}
+        var amounts = 0
+        for group in groups{
+            let accs = accounts.filter {$0.groupUid == group.uid}
+            
+            amounts = accs.map({$0.amount ?? 0}).reduce(0, +)
+            balanceGroupDataSource.append(BalanceGroup(group: group, acc: accs, amount: amounts))
+            amounts = 0
+        }
+    }
+}
+
+struct BalanceGroup {
+    var group: AccountGroup
+    var acc: [Account]
+    var amount: Int
 }
 
 

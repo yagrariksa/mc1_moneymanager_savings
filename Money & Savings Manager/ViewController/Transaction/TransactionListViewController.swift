@@ -8,7 +8,7 @@
 import UIKit
 
 class TransactionListViewController: UIViewController {
-
+    
     @IBOutlet var monthViewContainer: UIView!
     @IBOutlet var moneyStackContainer: UIStackView!
     @IBOutlet var separatorView: UIView!
@@ -46,7 +46,6 @@ class TransactionListViewController: UIViewController {
             expenseList = expense
         }
         
-        appDelegate?.generateTransactionDummy()
         appDelegate?.updateTransactionGroupDataSource()
         
         if let transaction = appDelegate?.transactionGroupList {
@@ -59,18 +58,18 @@ class TransactionListViewController: UIViewController {
             totalOverallLabel.text = "\(Transaction.moneyToString(data.t))"
         }
     }
-  
-
+    
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension TransactionListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -100,7 +99,7 @@ extension TransactionListViewController: UITableViewDelegate, UITableViewDataSou
             let tanggal = Int(dateFormatter.string(from: transactionGroupList[section].date))!
             cell.dateLabel.text = "\(tanggal)"
             
-          
+            
             let fCalendar = Calendar.current.component(.weekday, from: transactionGroupList[section].date)
             cell.dayLabel.text = "\(DateFormatter().weekdaySymbols[fCalendar - 1])"
             
@@ -125,7 +124,7 @@ extension TransactionListViewController: UITableViewDelegate, UITableViewDataSou
             let cell = tableView.dequeueReusableCell(withIdentifier: "transactionCell", for: indexPath) as! TransactionTableViewCell
             
             let data = transactionGroupList[section].list[row-1]
-        
+            
             let clockFormatter = DateFormatter()
             clockFormatter.dateFormat = "HH:mm"
             

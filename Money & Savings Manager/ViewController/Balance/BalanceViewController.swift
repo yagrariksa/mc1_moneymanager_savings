@@ -15,6 +15,9 @@ class BalanceViewController: UIViewController {
     
     @IBOutlet var stackInfoView: UIStackView!
     
+    var datasource: [BalanceGroup] = [BalanceGroup]()
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,55 +25,69 @@ class BalanceViewController: UIViewController {
         
         view.bringSubviewToFront(stackInfoView)
         view.bringSubviewToFront(separatorView)
-
+        
+        datasource = appDelegate.balanceGroupDataSource
+        
         // Do any additional setup after loading the view.
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension BalanceViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return datasource.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Int.random(in: 2..<5)
+        return datasource[section].acc.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "balanceHeader", for: indexPath) as! BalanceHeaderTableViewCell
             
-            cell.dateLabel.text = "Mandiri"
+            let source = datasource[indexPath.section]
             
-            cell.incomeLabel.text = "Rp 200.000"
-            cell.expenseLabel.text = "Rp 0"
+            cell.dateLabel.text = "\(source.group.name)"
+            
+            cell.balanceLabel.text = "\(Transaction.moneyToString(source.amount))"
+            
+            cell.balanceLabel.textColor = UIColor { (color) in
+                if source.amount > 0 {
+                    return .systemBlue
+                }else{
+                    return .systemRed
+                }
+                
+            }
             
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "accountCell", for: indexPath)
             
+            let source = datasource[indexPath.section].acc[indexPath.row - 1]
+            
             var content = cell.defaultContentConfiguration()
             
-            content.text = "Account"
+            content.text = "\(source.name)"
             
-            let amount = Int.random(in: -100..<100)
-            content.secondaryText = "Rp \(amount)"
+            content.secondaryText = "\(Transaction.moneyToString(source.amount ?? 0))"
             
             content.secondaryTextProperties.color = UIColor { (color) in
-                if amount > 0 {
+                if source.amount ?? 1 > 0 {
                     return .systemBlue
                 }else{
                     return .systemRed
