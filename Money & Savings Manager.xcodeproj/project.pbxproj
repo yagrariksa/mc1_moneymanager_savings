@@ -24,7 +24,6 @@
 		40A1A061282D460B00F1F52F /* AddAccountGroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1A060282D460B00F1F52F /* AddAccountGroupTableViewController.swift */; };
 		40A1A065282D524100F1F52F /* AddIncomeCategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1A064282D524100F1F52F /* AddIncomeCategoryTableViewController.swift */; };
 		40A1A067282D525000F1F52F /* IncomeCategoryListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1A066282D525000F1F52F /* IncomeCategoryListTableViewController.swift */; };
-		40A1A069282D538B00F1F52F /* PlistIncomeExpenseCategoryDataSourceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A1A068282D538B00F1F52F /* PlistIncomeExpenseCategoryDataSourceProtocols.swift */; };
 		40E41951282E0BB9005F011F /* BalanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E41950282E0BB9005F011F /* BalanceViewController.swift */; };
 		40E41953282E21A0005F011F /* BalanceHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E41952282E21A0005F011F /* BalanceHeaderTableViewCell.swift */; };
 		40E41955282E2FC4005F011F /* TransactionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E41954282E2FC4005F011F /* TransactionHeaderTableViewCell.swift */; };
@@ -37,7 +36,6 @@
 		40F052AE282975B10082A413 /* ExpenseCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F052AD282975B10082A413 /* ExpenseCategory.swift */; };
 		40F052B0282975CE0082A413 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F052AF282975CE0082A413 /* Transaction.swift */; };
 		40F052B3282975E70082A413 /* TransactionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F052B2282975E70082A413 /* TransactionType.swift */; };
-		40F052B8282B90240082A413 /* PlistDataSourceProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F052B7282B90240082A413 /* PlistDataSourceProtocols.swift */; };
 		40F052BA282B90C70082A413 /* ComplexDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40F052B9282B90C70082A413 /* ComplexDataSource.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,7 +78,6 @@
 		40A1A060282D460B00F1F52F /* AddAccountGroupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountGroupTableViewController.swift; sourceTree = "<group>"; };
 		40A1A064282D524100F1F52F /* AddIncomeCategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomeCategoryTableViewController.swift; sourceTree = "<group>"; };
 		40A1A066282D525000F1F52F /* IncomeCategoryListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeCategoryListTableViewController.swift; sourceTree = "<group>"; };
-		40A1A068282D538B00F1F52F /* PlistIncomeExpenseCategoryDataSourceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistIncomeExpenseCategoryDataSourceProtocols.swift; sourceTree = "<group>"; };
 		40E41950282E0BB9005F011F /* BalanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceViewController.swift; sourceTree = "<group>"; };
 		40E41952282E21A0005F011F /* BalanceHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalanceHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		40E41954282E2FC4005F011F /* TransactionHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHeaderTableViewCell.swift; sourceTree = "<group>"; };
@@ -93,7 +90,6 @@
 		40F052AD282975B10082A413 /* ExpenseCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCategory.swift; sourceTree = "<group>"; };
 		40F052AF282975CE0082A413 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		40F052B2282975E70082A413 /* TransactionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionType.swift; sourceTree = "<group>"; };
-		40F052B7282B90240082A413 /* PlistDataSourceProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistDataSourceProtocols.swift; sourceTree = "<group>"; };
 		40F052B9282B90C70082A413 /* ComplexDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplexDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -294,8 +290,6 @@
 		40F052B6282A54960082A413 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				40F052B7282B90240082A413 /* PlistDataSourceProtocols.swift */,
-				40A1A068282D538B00F1F52F /* PlistIncomeExpenseCategoryDataSourceProtocols.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -449,8 +443,6 @@
 				4057207428293D4B00FFDA9F /* SceneDelegate.swift in Sources */,
 				40F052A3282974080082A413 /* AccountListTableViewController.swift in Sources */,
 				40568A1A282E526D001C13A8 /* TransactionTableViewCell.swift in Sources */,
-				40A1A069282D538B00F1F52F /* PlistIncomeExpenseCategoryDataSourceProtocols.swift in Sources */,
-				40F052B8282B90240082A413 /* PlistDataSourceProtocols.swift in Sources */,
 				40F052B3282975E70082A413 /* TransactionType.swift in Sources */,
 				40F052A8282974830082A413 /* Account.swift in Sources */,
 				40E41951282E0BB9005F011F /* BalanceViewController.swift in Sources */,

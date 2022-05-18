@@ -13,6 +13,11 @@ class TransactionListViewController: UIViewController {
     @IBOutlet var moneyStackContainer: UIStackView!
     @IBOutlet var separatorView: UIView!
     
+    @IBOutlet var incomeOverallLabel: UILabel!
+    @IBOutlet var expenseOverallLabel: UILabel!
+    @IBOutlet var totalOverallLabel: UILabel!
+    
+    
     let appDelegate = UIApplication.shared.delegate as? AppDelegate
     
     var accountList: [Account] = [Account]()
@@ -46,6 +51,12 @@ class TransactionListViewController: UIViewController {
         
         if let transaction = appDelegate?.transactionGroupList {
             transactionGroupList = transaction
+        }
+        
+        if let data = appDelegate?.countOverallTransaction() {
+            incomeOverallLabel.text = "\(Transaction.moneyToString(data.i))"
+            expenseOverallLabel.text = "\(Transaction.moneyToString(data.e))"
+            totalOverallLabel.text = "\(Transaction.moneyToString(data.t))"
         }
     }
   
@@ -126,16 +137,16 @@ extension TransactionListViewController: UITableViewDelegate, UITableViewDataSou
             cell.amountLabel.text = "\(Transaction.moneyToString(data.amount))"
             switch data.type {
             case "Income":
-                cell.typeLabel.text = incomeList.first(where: {$0.uid == data.incomeCategoryUid})?.name
+                cell.typeLabel.text = incomeList.first(where: {$0.uid == data.targetUid})?.name
                 cell.amountLabel.textColor = UIColor.systemBlue
                 
             case "Expense":
-                cell.typeLabel.text = expenseList.first(where: {$0.uid == data.expenseCategoryUid})?.name
+                cell.typeLabel.text = expenseList.first(where: {$0.uid == data.targetUid})?.name
                 cell.amountLabel.textColor = UIColor.systemRed
                 
             default:
                 cell.typeLabel.text = "Transfer"
-                let penerima = accountList.first(where: {$0.uid == data.transferToUid})?.name
+                let penerima = accountList.first(where: {$0.uid == data.targetUid})?.name
                 cell.accountLabel.text = "\(acc!) -> \(penerima!)"
                 cell.amountLabel.textColor = UIColor.secondaryLabel
                 

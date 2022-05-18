@@ -64,7 +64,7 @@ class IncomeCategoryListTableViewController: UITableViewController, AddIncomeCat
         if let cell = sender as? UITableViewCell,
            let indexPath = tableView.indexPath(for: cell),
            let income = incomeList?[indexPath.row] {
-            var vc = AddIncomeCategoryTableViewController(coder: coder, income: income)
+            let vc = AddIncomeCategoryTableViewController(coder: coder, income: income)
             
             vc?.delegate = self
             return vc

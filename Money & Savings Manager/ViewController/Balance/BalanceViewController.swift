@@ -100,4 +100,11 @@ extension BalanceViewController: UITableViewDataSource, UITableViewDelegate {
         return 10
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 35
+        }
+        return 43
+    }
+    
 }
