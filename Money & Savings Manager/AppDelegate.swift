@@ -10,32 +10,49 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    var accountGroupDataSource: [AccountGroup]?
-    var accountListDataSource: [Account]?
-    var complexDataSource: [ComplexDataSource] = [ComplexDataSource]()
-    
-    var incomeCategoryDataSource: [IncomeCategory]?
-    var expenseCategoryDataSource: [ExpenseCategory]?
+    //    bahan
+    var accountList: [Account]?
+    // call on
     
     var transactionList: [Transaction] = [Transaction]()
-    var transactionGroupList: [TransactionGroup] = [TransactionGroup]()
     var dateTransactionListHelper: [String] = [String]()
     
-    var balanceGroupDataSource: [BalanceGroup] = [BalanceGroup]()
+    //    datasource
+    //    digunakan di viewcontroller
+    var accountGroupDataSource: [AccountGroup]?
+    // groupTableViewController
     
+    var accountComplexDataSource: [ComplexDataSource] = [ComplexDataSource]()
+    // accountListTableViewController
+    
+    var incomeCategoryDataSource: [IncomeCategory] = [IncomeCategory]()
+    // incomeCategoryListTableViewController
+    var expenseCategoryDataSource: [ExpenseCategory] = [ExpenseCategory]()
+    // expenseCategoryListTableViewController
+    
+    var transactionGroupDataSource: [TransactionGroup] = [TransactionGroup]()
+    // transactionListViewController
+    
+    var balanceGroupDataSource: [BalanceGroup] = [BalanceGroup]()
+    // balanceViewController
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         print("💙 didFinishLauncihng")
-        loadAccountAndGroupDataSource()
-        updateAccountAndGroupDataComplex()
-        loadDataIncomeExcomeCategory()
         
+        // load data from plist
+        loadDataFromPlis()
+        
+        // prepare data for settings/account
+        updateAccountDataComplex()
+        
+        // prepare data for transaction-page
         generateTransactionDummy()
         updateTransactionGroupDataSource()
         
-        setupBalanceDataSource()
+        // prepare data for balance-page
+        updateBalanceDataSource()
         
         return true
     }
@@ -56,6 +73,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
         print("💙 didDiscardSceneSessions")
+    }
+}
+
+extension AppDelegate {
+    func loadDataFromPlis()
+    {
+        // load data account
+        loadAccountFromPlist()
+        
+        // load data accoun-group
+        loadAccountGroupFromPlist()
+        
+        // load data income-cat
+        loadIncomeFromPlist()
+        
+        // load data expense-cat
+        loadExpenseFromPlist()
+        
+        // load data transaction
     }
 }
 

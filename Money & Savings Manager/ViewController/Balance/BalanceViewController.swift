@@ -33,8 +33,22 @@ class BalanceViewController: UIViewController {
     }
     
     func setupAmountInfo() {
-        let a = datasource.filter {$0.amount > 0}.map({$0.amount}).reduce(0, +)
-        let b = datasource.filter {$0.amount < 0}.map({$0.amount}).reduce(0, -)
+//        let a = datasource.filter {$0.amount > 0}.map({$0.amount}).reduce(0, +)
+//        let b = datasource.filter {$0.amount < 0}.map({$0.amount}).reduce(0, -)
+        
+        var a = 0
+        var b = 0
+        for group in datasource {
+            for acc in group.acc {
+                if let amount = acc.amount {
+                    if amount > 0 {
+                        a+=amount
+                    }else{
+                        b-=amount
+                    }
+                }
+            }
+        }
         
         accountAmountLabel.text = "\(Transaction.moneyToString(a))"
         liabilitiesAmountLabel.text = "\(Transaction.moneyToString(b))"
@@ -90,7 +104,6 @@ extension BalanceViewController: UITableViewDataSource, UITableViewDelegate {
                 }else{
                     return .systemRed
                 }
-                
             }
             
             return cell

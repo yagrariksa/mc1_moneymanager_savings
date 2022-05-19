@@ -9,13 +9,14 @@ import Foundation
 
 extension AppDelegate {
     func countBalance(){
-        guard let list = accountListDataSource else {return}
+        guard let list = accountList else {return}
         for acc in list {
+            print("💰\(acc.name)")
             // find modif-balance
             let modifbal = transactionList.last(where: {$0.targetUid == "MODIFIEDBALANCE" && $0.accountUid == acc.uid
             })
             
-            
+            // REFACTOR-TODO : transaction after modifbal
             // find related transaction
             let outtrans = transactionList.filter {$0.accountUid == acc.uid && $0.targetUid != "MODIFIEDBALANCE"}
             
@@ -24,31 +25,33 @@ extension AppDelegate {
             // do calculation
             guard let bal = modifbal else {return}
             var balance = bal.amount
+            print("bal :\(balance)")
             
             for i in outtrans {
                 if i.type == "Income"{
                     balance += i.amount
+                    print("+\(i.amount) => \(balance)")
                 }else{
                     balance -= i.amount
+                    print("-\(i.amount) => \(balance)")
                 }
             }
             
             for i in intrans {
                 balance += i.amount
+                print("+\(i.amount) => \(balance) TF")
             }
-            
+            print("akhir : \(balance)")
             // present value
             updateAccountAmount(acc.uid, amount: balance)
-            
         }
-        saveAccount(accountListDataSource)
     }
     
-    func setupBalanceDataSource() {
+    func updateBalanceDataSource() {
         balanceGroupDataSource = [BalanceGroup]()
         countBalance()
         
-        guard let groups = accountGroupDataSource, let accounts = accountListDataSource else {return}
+        guard let groups = accountGroupDataSource, let accounts = accountList else {return}
         var amounts = 0
         for group in groups{
             let accs = accounts.filter {$0.groupUid == group.uid}

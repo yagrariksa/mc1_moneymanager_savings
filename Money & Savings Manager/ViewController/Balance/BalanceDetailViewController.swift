@@ -8,7 +8,7 @@
 import UIKit
 
 class BalanceDetailViewController: UIViewController {
-
+    
     
     @IBOutlet var monthControlViewContainer: UIView!
     @IBOutlet var moneyInfoStackContainer: UIStackView!
@@ -19,6 +19,7 @@ class BalanceDetailViewController: UIViewController {
     @IBOutlet var totalLabel: UILabel!
     @IBOutlet var balanceLabel: UILabel!
     
+    @IBOutlet var mSeparator1: UIView!
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var datasource: [TransactionGroup] = [TransactionGroup]()
@@ -38,15 +39,21 @@ class BalanceDetailViewController: UIViewController {
         }
         
         loadDataHelper()
-
-        if let titleLabel = appDelegate.accountListDataSource?.first(where: {$0.uid == uid})?.name {
+        
+        if let titleLabel = appDelegate.accountList?.first(where: {$0.uid == uid})?.name {
             title = titleLabel
         }
         
         datasource = appDelegate.getTransactionByAccountUid(uid: uid)
-        print(datasource.count)
-
-        // Do any additional setup after loading the view.
+        
+        setupAmountInfo()
+    }
+    
+    func setupAmountInfo() {
+        let data = appDelegate.countOverallTransaction(transaction: datasource)
+        incomeLabel.text = "\(Transaction.moneyToString(data.i))"
+        expenseLabel.text = "\(Transaction.moneyToString(data.e))"
+        totalLabel.text = "\(Transaction.moneyToString(data.t))"
     }
     
     init?(coder: NSCoder, uid: String) {
@@ -59,30 +66,25 @@ class BalanceDetailViewController: UIViewController {
     }
     
     func loadDataHelper(){
-        if let data = appDelegate.accountListDataSource {
+        if let data = appDelegate.accountList {
             accountList = data
         }
+        incomeList = appDelegate.incomeCategoryDataSource
+        expenseList = appDelegate.expenseCategoryDataSource
         
-        if let income = appDelegate.incomeCategoryDataSource {
-            incomeList = income
-        }
-        
-        if let expense = appDelegate.expenseCategoryDataSource {
-            expenseList = expense
-        }
         
         appDelegate.updateTransactionGroupDataSource()
     }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension BalanceDetailViewController: UITableViewDelegate, UITableViewDataSource {

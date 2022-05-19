@@ -39,16 +39,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1DD6F801-F476-4A65-A307-3A83495705DB"
-            shouldBeEnabled = "Yes"
+            uuid = "7B30784E-45A4-4644-83A8-B9B68A262BF4"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Money &amp; Savings Manager/AppDelegate.swift"
+            filePath = "Money &amp; Savings Manager/Extension/BalanceHandlerAppDelegateExtension.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "application(_:didFinishLaunchingWithOptions:)"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "countBalance()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

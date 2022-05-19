@@ -18,14 +18,14 @@ class TransactionListViewController: UIViewController {
     @IBOutlet var totalOverallLabel: UILabel!
     
     
-    let appDelegate = UIApplication.shared.delegate as? AppDelegate
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     var accountList: [Account] = [Account]()
     var expenseList: [ExpenseCategory] = [ExpenseCategory]()
     
     var incomeList: [IncomeCategory] = [IncomeCategory]()
     
-    var transactionGroupList: [TransactionGroup] = [TransactionGroup]()
+    var datasource: [TransactionGroup] = [TransactionGroup]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,29 +34,25 @@ class TransactionListViewController: UIViewController {
         view.bringSubviewToFront(moneyStackContainer)
         view.bringSubviewToFront(separatorView)
         
-        if let data = appDelegate?.accountListDataSource {
+        if let data = appDelegate.accountList {
             accountList = data
         }
         
-        if let income = appDelegate?.incomeCategoryDataSource {
-            incomeList = income
-        }
+        incomeList = appDelegate.incomeCategoryDataSource
+        expenseList = appDelegate.expenseCategoryDataSource
         
-        if let expense = appDelegate?.expenseCategoryDataSource {
-            expenseList = expense
-        }
+        appDelegate.updateTransactionGroupDataSource()
         
-        appDelegate?.updateTransactionGroupDataSource()
+        datasource = appDelegate.transactionGroupDataSource
         
-        if let transaction = appDelegate?.transactionGroupList {
-            transactionGroupList = transaction
-        }
-        
-        if let data = appDelegate?.countOverallTransaction() {
-            incomeOverallLabel.text = "\(Transaction.moneyToString(data.i))"
-            expenseOverallLabel.text = "\(Transaction.moneyToString(data.e))"
-            totalOverallLabel.text = "\(Transaction.moneyToString(data.t))"
-        }
+        setupAmountInfo()
+    }
+    
+    func setupAmountInfo() {
+        let data = appDelegate.countOverallTransaction()
+        incomeOverallLabel.text = "\(Transaction.moneyToString(data.i))"
+        expenseOverallLabel.text = "\(Transaction.moneyToString(data.e))"
+        totalOverallLabel.text = "\(Transaction.moneyToString(data.t))"
     }
     
     
@@ -75,10 +71,10 @@ class TransactionListViewController: UIViewController {
 extension TransactionListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return transactionGroupList.count
+        return datasource.count
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return transactionGroupList[section].list.count + 1
+        return datasource[section].list.count + 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -96,11 +92,11 @@ extension TransactionListViewController: UITableViewDelegate, UITableViewDataSou
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd"
-            let tanggal = Int(dateFormatter.string(from: transactionGroupList[section].date))!
+            let tanggal = Int(dateFormatter.string(from: datasource[section].date))!
             cell.dateLabel.text = "\(tanggal)"
             
             
-            let fCalendar = Calendar.current.component(.weekday, from: transactionGroupList[section].date)
+            let fCalendar = Calendar.current.component(.weekday, from: datasource[section].date)
             cell.dayLabel.text = "\(DateFormatter().weekdaySymbols[fCalendar - 1])"
             
             
@@ -116,13 +112,13 @@ extension TransactionListViewController: UITableViewDelegate, UITableViewDataSou
             
             cell.dayViewContainer.layer.cornerRadius = 4
             
-            cell.incomeLabel.text = "\(Transaction.moneyToString(transactionGroupList[section].income))"
-            cell.expenseLabel.text = "\(Transaction.moneyToString(transactionGroupList[section].expense))"
+            cell.incomeLabel.text = "\(Transaction.moneyToString(datasource[section].income))"
+            cell.expenseLabel.text = "\(Transaction.moneyToString(datasource[section].expense))"
             
             return cell
         }else{
             
-            let data = transactionGroupList[section].list[row-1]
+            let data = datasource[section].list[row-1]
             
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "transactionCell", for: indexPath) as! TransactionTableViewCell

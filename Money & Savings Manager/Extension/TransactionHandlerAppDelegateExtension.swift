@@ -17,9 +17,10 @@ extension AppDelegate {
         let mf = DateFormatter()
         mf.dateFormat = "dd"
         
-        guard let accountList = accountListDataSource,
-              let expenseList = expenseCategoryDataSource,
-              let incomeList = incomeCategoryDataSource else {return}
+        guard let accountList = accountList else {return}
+        
+        let expenseList = expenseCategoryDataSource
+        let incomeList = incomeCategoryDataSource
         
         for acc in accountList {
             let transaction = Transaction(
@@ -42,7 +43,7 @@ extension AppDelegate {
             let typeTransaction = ["Income","Expense","Transfer"].randomElement()!
             
             var targetUid = ""
-            var accTransaction = accountList[Int.random(in: 0..<accountList.count)].uid
+            let accTransaction = accountList[Int.random(in: 0..<accountList.count)].uid
             
             if typeTransaction == "Income" {
                 targetUid = incomeList[Int.random(in: 0..<incomeList.count)].uid
@@ -69,14 +70,10 @@ extension AppDelegate {
         transactionList.sort(by: {$0.date < $1.date})
         
         dateTransactionListHelper = Array(Set(transactionList.map({$0.date.formatted(date: .numeric, time: .omitted)})))
-        //        for i in transactionList {
-        //            print(i.date)
-        //        }
-        //        print("transaction count : \(transactionList.count)")
     }
     
     func updateTransactionGroupDataSource() {
-        transactionGroupList = [TransactionGroup]()
+        transactionGroupDataSource = [TransactionGroup]()
         
         //        refactor this code
         let formatter = DateFormatter()
@@ -88,11 +85,11 @@ extension AppDelegate {
             let data = transactionList.filter {$0.date.formatted(date: .numeric, time: .omitted) == i}
             
             if data.count > 0 {
-                transactionGroupList.append(TransactionGroup(date: data[0].date, list: data, income: countIncome(data), expense: countExpense(data)))
+                transactionGroupDataSource.append(TransactionGroup(date: data[0].date, list: data, income: countIncome(data), expense: countExpense(data)))
             }
         }
         
-        transactionGroupList.sort(by: {$0.date > $1.date})
+        transactionGroupDataSource.sort(by: {$0.date > $1.date})
     }
     
     func countIncome(_ data: [Transaction]) -> Int {
@@ -114,10 +111,49 @@ extension AppDelegate {
     func countOverallTransaction() -> (i: Int, e:Int, t: Int) {
         var income = 0
         var expense = 0
-        for t in transactionGroupList {
+        for t in transactionGroupDataSource {
             income+=t.income
             expense+=t.expense
         }
         return (income, expense, income-expense)
+    }
+    
+    func countOverallTransaction(transaction: [TransactionGroup]) -> (i: Int, e:Int, t: Int) {
+        var income = 0
+        var expense = 0
+        for t in transaction {
+            income+=t.income
+            expense+=t.expense
+        }
+        return (income, expense, income-expense)
+    }
+
+    
+    func addTransaction(_ transaction: Transaction) {
+        transactionList.append(transaction)
+        saveTransaction()
+    }
+    
+    func updateTransaction(_ transaction: Transaction) {
+        if let index = transactionList.firstIndex(where: {$0.uid == transaction.uid}) {
+            transactionList[index] = transaction
+            saveTransaction()
+        }
+    }
+    
+    func deleteTransaction(uid: String) {
+        if let index = transactionList.firstIndex(where: {$0.uid == uid}) {
+            transactionList.remove(at: index)
+            saveTransaction()
+        }
+    }
+    
+    func saveTransaction() {
+        Transaction.saveData(data: transactionList)
+        // update balanceGroupDataSource
+        updateBalanceDataSource()
+        
+        // update transactionGroupDataSource
+        updateTransactionGroupDataSource()
     }
 }
