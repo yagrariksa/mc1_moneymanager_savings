@@ -15,13 +15,13 @@ class AccountListTableViewController: UITableViewController, AddAccountTableView
         }
     }
     
-    var complexDataSource: [ComplexDataSource] = [ComplexDataSource]()
+    var datasource: [ComplexDataSource] = [ComplexDataSource]()
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        updateComplexDataSource()
+        updatedatasource()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -30,9 +30,9 @@ class AccountListTableViewController: UITableViewController, AddAccountTableView
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    func updateComplexDataSource()
+    func updatedatasource()
     {
-        self.complexDataSource = appDelegate.complexDataSource
+        self.datasource = appDelegate.accountComplexDataSource
     }
     
     @IBAction func editButtonTapped(_ sender: Any) {
@@ -42,7 +42,7 @@ class AccountListTableViewController: UITableViewController, AddAccountTableView
     @IBSegueAction func addEditAccount(_ coder: NSCoder, sender: Any?) -> AddAccountTableViewController? {
         
         if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
-            let accountToEdit = complexDataSource[indexPath.section].accounts[indexPath.row]
+            let accountToEdit = datasource[indexPath.section].accounts[indexPath.row]
             let a =  AddAccountTableViewController(coder: coder, account: accountToEdit)
             a?.delegate = self
             return a
@@ -61,7 +61,7 @@ class AccountListTableViewController: UITableViewController, AddAccountTableView
             }else{
                 appDelegate.addAccount(account)
             }
-            updateComplexDataSource()
+            updatedatasource()
             tableView.reloadData()
         }
         
@@ -71,18 +71,18 @@ class AccountListTableViewController: UITableViewController, AddAccountTableView
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return complexDataSource.count
+        return datasource.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return complexDataSource[section].accounts.count
+        return datasource[section].accounts.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "accountCell", for: indexPath)
         
-        let data = complexDataSource[indexPath.section].accounts[indexPath.row]
+        let data = datasource[indexPath.section].accounts[indexPath.row]
         
         var content = cell.defaultContentConfiguration()
         
@@ -94,7 +94,7 @@ class AccountListTableViewController: UITableViewController, AddAccountTableView
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "\(complexDataSource[section].group.name)"
+        return "\(datasource[section].group.name)"
     }
     
     
@@ -110,9 +110,9 @@ class AccountListTableViewController: UITableViewController, AddAccountTableView
      // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let acc = complexDataSource[indexPath.section].accounts[indexPath.row]
+            let acc = datasource[indexPath.section].accounts[indexPath.row]
             appDelegate.deleteAccount(uid: acc.uid)
-            updateComplexDataSource()
+            updatedatasource()
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view

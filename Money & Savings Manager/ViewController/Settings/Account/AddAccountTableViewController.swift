@@ -89,7 +89,6 @@ class AddAccountTableViewController: UITableViewController {
     
     // show Picker View
     @IBAction func selectAccountGroup(_ sender: Any) {
-        print("alert Picker")
         
         let vc = UIViewController()
         vc.preferredContentSize = CGSize(width: screenWidth, height: screenHeight)

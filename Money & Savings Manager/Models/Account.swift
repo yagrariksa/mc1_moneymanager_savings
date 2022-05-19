@@ -12,6 +12,7 @@ struct Account: Codable, Equatable {
     var uid: String
     var group: AccountGroup
     var groupUid: String
+    var amount: Int?
     
     static func ==(lhs: Account, rhs: Account) -> Bool {
         return lhs.uid == rhs.uid
@@ -27,7 +28,6 @@ struct Account: Codable, Equatable {
     {
         let propertyListEncoder = PropertyListEncoder()
         let encodedAccounts = try? propertyListEncoder.encode(accounts)
-        print("save data : \(accounts.count)")
         try? encodedAccounts?.write(to: Account.getPath(), options: .noFileProtection)
     }
     

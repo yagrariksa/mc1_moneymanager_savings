@@ -9,27 +9,56 @@ import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var accountGroupDataSource: [AccountGroup]?
-    var accountListDataSource: [Account]?
-    var complexDataSource: [ComplexDataSource] = [ComplexDataSource]()
     
-    var incomeCategoryDataSource: [IncomeCategory]?
-    var expenseCategoryDataSource: [ExpenseCategory]?
-
+    //    bahan
+    var accountList: [Account]?
+    // call on
+    
+    var transactionList: [Transaction] = [Transaction]()
+    var dateTransactionListHelper: [String] = [String]()
+    
+    //    datasource
+    //    digunakan di viewcontroller
+    var accountGroupDataSource: [AccountGroup]?
+    // groupTableViewController
+    
+    var accountComplexDataSource: [ComplexDataSource] = [ComplexDataSource]()
+    // accountListTableViewController
+    
+    var incomeCategoryDataSource: [IncomeCategory] = [IncomeCategory]()
+    // incomeCategoryListTableViewController
+    var expenseCategoryDataSource: [ExpenseCategory] = [ExpenseCategory]()
+    // expenseCategoryListTableViewController
+    
+    var transactionGroupDataSource: [TransactionGroup] = [TransactionGroup]()
+    // transactionListViewController
+    
+    var balanceGroupDataSource: [BalanceGroup] = [BalanceGroup]()
+    // balanceViewController
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         print("💙 didFinishLauncihng")
-        updateDataSource()
-        updateDataComplex(accounts: accountListDataSource, groups: accountGroupDataSource)
-        loadData()
+        
+        // load data from plist
+        loadDataFromPlis()
+        
+        // prepare data for settings/account
+        updateAccountDataComplex()
+        
+        // prepare data for transaction-page
+        generateTransactionDummy()
+        updateTransactionGroupDataSource()
+        
+        // prepare data for balance-page
+        updateBalanceDataSource()
         
         return true
     }
-
+    
     // MARK: UISceneSession Lifecycle
-
+    
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
         // Called when a new scene session is being created.
         // Use this method to select a configuration to create the new scene with.
@@ -38,174 +67,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
-
+    
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
         // Called when the user discards a scene session.
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-        debugPrint("💙 didDiscardSceneSessions")
-    }
-
-}
-
-extension AppDelegate: PlistDataSourceProtocols {
-    func updateAccountGRoup(_ group: AccountGroup) {
-        if let index = accountGroupDataSource?.firstIndex(where: {$0.uid == group.uid}) {
-            accountGroupDataSource?[index] = group
-            saveAccountGroup(accountGroupDataSource)
-            updateDataComplex()
-        }
-    }
-    
-    func updateDataComplex() {
-        updateDataComplex(accounts: accountListDataSource, groups: accountGroupDataSource)
-    }
-    
-    func deleteAccount(uid: String) {
-        if let index = accountListDataSource?.firstIndex(where: {$0.uid == uid}) {
-            accountListDataSource?.remove(at: index)
-            saveAccount(accountListDataSource)
-            updateDataComplex()
-        }
-    }
-    
-    func deleteAccountGroup(uid: String) {
-        if let index = accountGroupDataSource?.firstIndex(where: {$0.uid == uid}){
-            accountGroupDataSource?.remove(at: index)
-            saveAccountGroup(accountGroupDataSource)
-            updateDataComplex()
-        }
-    }
-    
-    func updateDataComplex(data: [ComplexDataSource]) {
-        self.complexDataSource = data
-    }
-    
-    func updateAccount(_ account: Account) {
-        if let index = accountListDataSource?.firstIndex(where: {$0.uid == account.uid}) {
-            accountListDataSource?[index] = account
-            saveAccount(accountListDataSource)
-            updateDataComplex()
-        }
-    }
-    
-
-    func addAccount(_ account: Account) {
-        accountListDataSource?.append(account)
-        saveAccount(accountListDataSource)
-        updateDataComplex(accounts: accountListDataSource, groups: accountGroupDataSource)
-    }
-    
-    func addAccountGroup(_ group: AccountGroup) {
-        accountGroupDataSource?.append(group)
-        saveAccountGroup(accountGroupDataSource)
-    }
-    
-    func saveAccount(_ accounts: [Account]?) {
-        if let accounts = accounts {
-            Account.saveData(accounts)
-        }
-    }
-    
-    func saveAccountGroup(_ groups: [AccountGroup]?) {
-        if let groups = groups {
-            AccountGroup.saveData(groups)
-        }
-    }
-    
-    // dipake buat GET data dari plist
-    func updateDataSource() {
-        if let dataAcc = Account.loadData(), let dataGroup = AccountGroup.loadData() {
-            print("🤍 has Own Data")
-            accountListDataSource = dataAcc
-            accountGroupDataSource = dataGroup
-        }else {
-            let accountSeed = Account.seed()
-            accountListDataSource = accountSeed.account
-            accountGroupDataSource = accountSeed.group
-            saveAccount(accountListDataSource)
-            saveAccountGroup(accountGroupDataSource)
-        }
-        
-    }
-    
-    // dipake buat update Data Complex untuk Data Source
-    func updateDataComplex(accounts: [Account]?, groups: [AccountGroup]?) {
-        complexDataSource = [ComplexDataSource]()
-        if let groups = groups, let accounts = accounts {
-            for group in groups {
-                let filter = accounts.filter {$0.groupUid == group.uid}
-                let data = ComplexDataSource(group: group, accounts: filter)
-                complexDataSource.append(data)
-            }
-        }
-        
+        print("💙 didDiscardSceneSessions")
     }
 }
 
-extension AppDelegate: PlisIncomeExpenseCategoryDataSourceProtocols {
-    func updateIncome(_ income: IncomeCategory) {
-        if let index = incomeCategoryDataSource?.firstIndex(where: {$0.uid == income.uid}) {
-            incomeCategoryDataSource?[index] = income
-            saveIncome()
-        }
-    }
-    
-    func updateExpense(_ expense: ExpenseCategory) {
-        if let index = expenseCategoryDataSource?.firstIndex(where: {$0.uid == expense.uid}) {
-            expenseCategoryDataSource?[index] = expense
-            saveIncome()
-        }
-    }
-    
-    func saveIncome() {
-        guard let income = incomeCategoryDataSource else {return}
-        IncomeCategory.saveData(income)
-    }
-    
-    func saveExpense() {
-        guard let expense = expenseCategoryDataSource else {return}
-        ExpenseCategory.saveData(expense)
-    }
-    
-    func addIncome(_ income: IncomeCategory) {
-        incomeCategoryDataSource?.append(income)
-        saveIncome()
-    }
-    
-    func addExpense(_ expense: ExpenseCategory) {
-        expenseCategoryDataSource?.append(expense)
-        saveExpense()
-    }
-    
-    func deleteIncome(_ uid: String) {
-        if let index = incomeCategoryDataSource?.firstIndex(where: {$0.uid == uid}) {
-            incomeCategoryDataSource?.remove(at: index)
-            saveIncome()
-        }
-    }
-    
-    func deleteExpense(_ uid: String) {
-        if let index = expenseCategoryDataSource?.firstIndex(where: {$0.uid == uid}){
-            expenseCategoryDataSource?.remove(at: index)
-            saveExpense()
-        }
-    }
-    
-    func loadData() {
-        if let income = IncomeCategory.loadData() {
-            incomeCategoryDataSource = income
-        }else{
-            incomeCategoryDataSource = IncomeCategory.seed()
-        }
+extension AppDelegate {
+    func loadDataFromPlis()
+    {
+        // load data account
+        // load data accoun-group
+        loadAccountAndGroupFromPlist()
         
-        if let expense = ExpenseCategory.loadData() {
-            expenseCategoryDataSource = expense
-        }else{
-            expenseCategoryDataSource = ExpenseCategory.seed()
-        }
+        // load data income-cat
+        loadIncomeFromPlist()
+        
+        // load data expense-cat
+        loadExpenseFromPlist()
+        
+        // load data transaction
     }
-    
-    
 }
+
+
+
 
