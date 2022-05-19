@@ -15,22 +15,41 @@ class BalanceViewController: UIViewController {
     
     @IBOutlet var stackInfoView: UIStackView!
     
+    @IBOutlet var accountAmountLabel: UILabel!
+    @IBOutlet var liabilitiesAmountLabel: UILabel!
+    @IBOutlet var totalAmountLabel: UILabel!
+    
+    
     var datasource: [BalanceGroup] = [BalanceGroup]()
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.sectionHeaderTopPadding = 0
-        
-        view.bringSubviewToFront(stackInfoView)
-        view.bringSubviewToFront(separatorView)
-        
         datasource = appDelegate.balanceGroupDataSource
         
+        setupAmountInfo()
         // Do any additional setup after loading the view.
     }
     
+    func setupAmountInfo() {
+        let a = datasource.filter {$0.amount > 0}.map({$0.amount}).reduce(0, +)
+        let b = datasource.filter {$0.amount < 0}.map({$0.amount}).reduce(0, -)
+        
+        accountAmountLabel.text = "\(Transaction.moneyToString(a))"
+        liabilitiesAmountLabel.text = "\(Transaction.moneyToString(b))"
+        totalAmountLabel.text = "\(Transaction.moneyToString(a-b))"
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detailBalance",
+           let cell = sender as? UITableViewCell,
+           let indexPath = tableView.indexPath(for: cell){
+            let uid = datasource[indexPath.section].acc[indexPath.row - 1].uid
+            let vc = segue.destination as! BalanceDetailViewController
+            vc.uid = uid
+        }
+    }
     
     /*
      // MARK: - Navigation
@@ -106,7 +125,7 @@ extension BalanceViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: false)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

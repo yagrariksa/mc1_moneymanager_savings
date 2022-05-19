@@ -121,9 +121,11 @@ extension TransactionListViewController: UITableViewDelegate, UITableViewDataSou
             
             return cell
         }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "transactionCell", for: indexPath) as! TransactionTableViewCell
             
             let data = transactionGroupList[section].list[row-1]
+            
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "transactionCell", for: indexPath) as! TransactionTableViewCell
             
             let clockFormatter = DateFormatter()
             clockFormatter.dateFormat = "HH:mm"
