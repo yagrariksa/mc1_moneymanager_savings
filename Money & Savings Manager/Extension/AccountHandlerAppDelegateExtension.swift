@@ -72,21 +72,14 @@ extension AppDelegate {
         }
     }
     
-    func loadAccountFromPlist() {
-        if let dataAcc = Account.loadData() {
+    func loadAccountAndGroupFromPlist() {
+        if let dataAcc = Account.loadData(),let dataGroup = AccountGroup.loadData() {
+            accountGroupDataSource = dataGroup
             accountList = dataAcc
         }else {
             let seed = Account.seed()
             accountList = seed.account
             saveAccount()
-        }
-    }
-    
-    func loadAccountGroupFromPlist() {
-        if let dataGroup = AccountGroup.loadData() {
-            accountGroupDataSource = dataGroup
-        }else {
-            let seed = Account.seed()
             accountGroupDataSource = seed.group
             saveAccountGroup()
         }

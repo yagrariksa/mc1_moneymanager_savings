@@ -38,20 +38,20 @@
                                 <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="balanceHeader" id="dZL-Fy-Rnv" customClass="BalanceHeaderTableViewCell" customModule="Money___Savings_Manager" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49" width="390" height="39.333332061767578"/>
+                                        <rect key="frame" x="0.0" y="49" width="390" height="17.333333969116211"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dZL-Fy-Rnv" id="Gy7-D7-CvD">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="39.333332061767578"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="17.333333969116211"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7H1-d0-bQ9">
-                                                    <rect key="frame" x="19.999999999999996" y="0.0" width="36.666666666666657" height="39.333333333333336"/>
+                                                    <rect key="frame" x="19.999999999999996" y="0.0" width="36.666666666666657" height="17.333333333333332"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rp 2.000.000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Kb-Qh-iFO">
-                                                    <rect key="frame" x="175" y="10.999999999999998" width="195" height="17.333333333333329"/>
+                                                    <rect key="frame" x="175" y="0.0" width="195" height="17.333333333333332"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                                     <color key="textColor" systemColor="systemBlueColor"/>
                                                     <nil key="highlightedColor"/>
@@ -59,13 +59,13 @@
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
-                                                <constraint firstItem="4Kb-Qh-iFO" firstAttribute="top" secondItem="Gy7-D7-CvD" secondAttribute="topMargin" id="86Z-KM-zxa"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="4Kb-Qh-iFO" secondAttribute="bottom" id="T1H-td-ky3"/>
                                                 <constraint firstItem="4Kb-Qh-iFO" firstAttribute="trailing" secondItem="Gy7-D7-CvD" secondAttribute="trailingMargin" id="aZV-FZ-Elo"/>
                                                 <constraint firstItem="7H1-d0-bQ9" firstAttribute="leading" secondItem="Gy7-D7-CvD" secondAttribute="leadingMargin" id="fFH-f4-SFm"/>
                                                 <constraint firstItem="4Kb-Qh-iFO" firstAttribute="width" secondItem="Gy7-D7-CvD" secondAttribute="width" multiplier="0.5" id="gNJ-Kt-BoH"/>
+                                                <constraint firstItem="4Kb-Qh-iFO" firstAttribute="top" secondItem="Gy7-D7-CvD" secondAttribute="top" id="jja-oc-sfB"/>
                                                 <constraint firstAttribute="bottom" secondItem="7H1-d0-bQ9" secondAttribute="bottom" id="p0i-2B-zYm"/>
                                                 <constraint firstItem="7H1-d0-bQ9" firstAttribute="top" secondItem="Gy7-D7-CvD" secondAttribute="top" id="rLh-Ta-fFV"/>
+                                                <constraint firstAttribute="bottom" secondItem="4Kb-Qh-iFO" secondAttribute="bottom" id="w5c-iQ-rfH"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
@@ -75,7 +75,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="accountCell" textLabel="pUo-o3-thr" detailTextLabel="Vz1-3B-46s" style="IBUITableViewCellStyleValue1" id="92w-Yy-cbd">
-                                        <rect key="frame" x="0.0" y="88.333332061767578" width="390" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="66.333333969116211" width="390" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="92w-Yy-cbd" id="7zk-JT-cmE">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
@@ -1219,6 +1219,7 @@
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fQ5-AR-XgD">
                                                     <rect key="frame" x="108.66666666666666" y="0.0" width="261.33333333333337" height="39.333333333333336"/>
+                                                    <accessibility key="accessibilityConfiguration" hint="insert your account name" label="TextField"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
@@ -1732,7 +1733,7 @@
         <scene sceneID="lR0-nu-H1a">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xSN-mv-JN1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Transaction" image="dollarsign.square" catalog="system" id="3Wx-NQ-3KM"/>
+                    <tabBarItem key="tabBarItem" title="Transaction" image="dollarsign.circle" catalog="system" id="3Wx-NQ-3KM"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="T9Q-t7-p4h">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
@@ -1770,7 +1771,7 @@
         <scene sceneID="nVN-lc-ry2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="e9j-Kb-0ec" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Savings" image="banknote" catalog="system" id="cQR-FF-CSY"/>
+                    <tabBarItem key="tabBarItem" title="Savings" image="arrow.down.heart" catalog="system" id="cQR-FF-CSY"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UxP-Y9-frU">
                         <rect key="frame" x="0.0" y="44" width="390" height="44"/>
@@ -1814,10 +1815,10 @@
         <segue reference="kv2-2l-zWf"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="banknote" catalog="system" width="128" height="78"/>
+        <image name="arrow.down.heart" catalog="system" width="128" height="109"/>
         <image name="chevron.left" catalog="system" width="96" height="128"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
-        <image name="dollarsign.square" catalog="system" width="128" height="114"/>
+        <image name="dollarsign.circle" catalog="system" width="128" height="121"/>
         <image name="gear" catalog="system" width="128" height="119"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="wallet.pass" catalog="system" width="115" height="128"/>

@@ -165,7 +165,6 @@
 			children = (
 				40568A1B282E65D4001C13A8 /* Extension */,
 				40E4194B282E01BC005F011F /* View */,
-				40F052B6282A54960082A413 /* Protocols */,
 				40F052A62829747A0082A413 /* Models */,
 				40F0529C282966450082A413 /* ViewController */,
 				4057207128293D4B00FFDA9F /* AppDelegate.swift */,
@@ -300,13 +299,6 @@
 				40F052B2282975E70082A413 /* TransactionType.swift */,
 			);
 			path = Enum;
-			sourceTree = "<group>";
-		};
-		40F052B6282A54960082A413 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

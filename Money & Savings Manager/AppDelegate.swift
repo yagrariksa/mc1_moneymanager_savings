@@ -80,10 +80,8 @@ extension AppDelegate {
     func loadDataFromPlis()
     {
         // load data account
-        loadAccountFromPlist()
-        
         // load data accoun-group
-        loadAccountGroupFromPlist()
+        loadAccountAndGroupFromPlist()
         
         // load data income-cat
         loadIncomeFromPlist()
