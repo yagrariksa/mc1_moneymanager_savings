@@ -11,7 +11,6 @@ extension AppDelegate {
     func countBalance(){
         guard let list = accountList else {return}
         for acc in list {
-            print("💰\(acc.name)")
             // find modif-balance
             let modifbal = transactionList.last(where: {$0.targetUid == "MODIFIEDBALANCE" && $0.accountUid == acc.uid
             })
@@ -25,23 +24,18 @@ extension AppDelegate {
             // do calculation
             guard let bal = modifbal else {return}
             var balance = bal.amount
-            print("bal :\(balance)")
             
             for i in outtrans {
                 if i.type == "Income"{
                     balance += i.amount
-                    print("+\(i.amount) => \(balance)")
                 }else{
                     balance -= i.amount
-                    print("-\(i.amount) => \(balance)")
                 }
             }
             
             for i in intrans {
                 balance += i.amount
-                print("+\(i.amount) => \(balance) TF")
             }
-            print("akhir : \(balance)")
             // present value
             updateAccountAmount(acc.uid, amount: balance)
         }

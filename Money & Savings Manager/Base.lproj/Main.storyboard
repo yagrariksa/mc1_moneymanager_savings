@@ -16,14 +16,46 @@
                     <view key="view" contentMode="scaleToFill" id="kpj-3e-e2d">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pPy-ML-PNA">
+                                <rect key="frame" x="0.0" y="244.33333333333334" width="390" height="355.33333333333326"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This Feature will come at the next version of this App" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6T-h5-AnI">
+                                        <rect key="frame" x="48.666666666666657" y="308.33333333333326" width="292.66666666666674" height="47"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                        <color key="textColor" systemColor="secondaryLabelColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hand-drawn" translatesAutoresizingMaskIntoConstraints="NO" id="X3y-NU-HLO">
+                                        <rect key="frame" x="48.666666666666657" y="0.0" width="292.66666666666674" height="292.33333333333331"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="X3y-NU-HLO" firstAttribute="width" secondItem="pPy-ML-PNA" secondAttribute="width" multiplier="0.75" id="1ZK-on-oEi"/>
+                                    <constraint firstItem="X3y-NU-HLO" firstAttribute="centerX" secondItem="pPy-ML-PNA" secondAttribute="centerX" id="B7H-V7-4nt"/>
+                                    <constraint firstAttribute="bottom" secondItem="u6T-h5-AnI" secondAttribute="bottom" id="CV2-4X-N0z"/>
+                                    <constraint firstItem="X3y-NU-HLO" firstAttribute="height" secondItem="pPy-ML-PNA" secondAttribute="width" multiplier="0.75" id="NVR-4M-ozC"/>
+                                    <constraint firstItem="u6T-h5-AnI" firstAttribute="trailing" secondItem="X3y-NU-HLO" secondAttribute="trailing" id="Tmo-Tg-Svu"/>
+                                    <constraint firstItem="X3y-NU-HLO" firstAttribute="top" secondItem="pPy-ML-PNA" secondAttribute="top" id="VtG-12-J3Y"/>
+                                    <constraint firstItem="u6T-h5-AnI" firstAttribute="leading" secondItem="X3y-NU-HLO" secondAttribute="leading" id="aF0-oX-jDH"/>
+                                    <constraint firstItem="u6T-h5-AnI" firstAttribute="top" secondItem="X3y-NU-HLO" secondAttribute="bottom" constant="16" id="iEx-AB-Mfn"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="df6-bY-X0g"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="pPy-ML-PNA" firstAttribute="leading" secondItem="df6-bY-X0g" secondAttribute="leading" id="1yg-26-XVN"/>
+                            <constraint firstItem="pPy-ML-PNA" firstAttribute="centerY" secondItem="kpj-3e-e2d" secondAttribute="centerY" id="1yr-P1-rEj"/>
+                            <constraint firstItem="df6-bY-X0g" firstAttribute="trailing" secondItem="pPy-ML-PNA" secondAttribute="trailing" id="SLm-PT-hun"/>
+                            <constraint firstItem="pPy-ML-PNA" firstAttribute="centerX" secondItem="kpj-3e-e2d" secondAttribute="centerX" id="ZYE-oB-jaf"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Savings" id="Gii-Ta-v0R"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kEu-NM-S53" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-323" y="-1518"/>
+            <point key="canvasLocation" x="-323.07692307692304" y="-1518.4834123222747"/>
         </scene>
         <!--Balance-->
         <scene sceneID="Afj-tb-wwA">
@@ -1773,8 +1805,8 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="e9j-Kb-0ec" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Savings" image="arrow.down.heart" catalog="system" id="cQR-FF-CSY"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UxP-Y9-frU">
-                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="UxP-Y9-frU">
+                        <rect key="frame" x="0.0" y="44" width="390" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1820,6 +1852,7 @@
         <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="dollarsign.circle" catalog="system" width="128" height="121"/>
         <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="hand-drawn" width="700" height="700"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="wallet.pass" catalog="system" width="115" height="128"/>
         <namedColor name="AccentColor">
